@@ -20,7 +20,11 @@
 </div>
 
 <style>
-	/* Footer sticky at the bottom */
+	.app {
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
+	}
 	footer {
 		position: fixed;
 		bottom: 0;

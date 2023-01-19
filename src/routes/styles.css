@@ -1,9 +1,9 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 :root {
-	--background-color-0: #530083;
-	--background-color-1: #7a2a2a;
-	--background-color-2: #246e15;
+	--background-color-0: #200430;
+	--background-color-1: #3f0f0f;
+	--background-color-2: #0e3106;
 	--component-background-color-0: #1e1e1e;
 	--component-background-color-1: #2e2e2e;
 	--box-shadow-color: rgba(255, 255, 255, 0.5);
@@ -37,8 +37,12 @@ body {
 		var(--background-color-1) 100%
 	);
 	background-size: 400% 400%;
-	overflow: hidden;
+	-webkit-animation: gradient 15s ease infinite;
 	animation: gradient 15s ease infinite;
+}
+
+body::-webkit-scrollbar {
+	width: 0rem;
 }
 
 @keyframes gradient {
