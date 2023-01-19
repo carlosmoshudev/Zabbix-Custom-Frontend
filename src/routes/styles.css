@@ -1,28 +1,28 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 :root {
-	/* Colors */
 	--background-color-0: #530083;
 	--background-color-1: #7a2a2a;
 	--background-color-2: #246e15;
-
-	--component-background-color: #1e1e1e;
-
-	--box-shadow-color: rgba(30, 30, 30, 0.5);
+	--component-background-color-0: #1e1e1e;
+	--component-background-color-1: #2e2e2e;
+	--box-shadow-color: rgba(255, 255, 255, 0.5);
 
 	--text-primary-color: #000000;
 	--text-secondary-color: #5e5e5e;
 	--text-other-color: #bababa;
-	--light-text-color: hsl(224, 44%, 95%);
+	--light-text-color-0: hsl(224, 44%, 95%);
+	--light-text-color-1: hsla(198, 87%, 85%, 0.815);
 
 	--online-color: #a7c957;
 	--offline-color: #e63946;
 	--unknown-color: #f77f00;
 
-	/* Fonts */
 	--primary-font: 'Montserrat', sans-serif;
 
 	--nav-font-size: 1rem;
+	--nav-font-weight: 500;
+	--nav-text-shadow: 0 0 1px #fff;
 
 	/* Background */
 	--background-linear-degree: 90deg;
@@ -37,6 +37,7 @@ body {
 		var(--background-color-1) 100%
 	);
 	background-size: 400% 400%;
+	overflow: hidden;
 	animation: gradient 15s ease infinite;
 }
 

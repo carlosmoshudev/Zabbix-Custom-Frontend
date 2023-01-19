@@ -20,19 +20,31 @@
 </section>
 
 <style>
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		font-family: var(--primary-font);
+	}
 	section {
-		background-color: var(--component-background-color);
-		color: var(--light-text-color);
+		background: linear-gradient(
+			180deg,
+			var(--component-background-color-1) 0%,
+			var(--component-background-color-0) 50%,
+			var(--component-background-color-1) 100%
+		);
 		font-size: var(--nav-font-size);
+		font-weight: var(--nav-font-weight);
+		text-shadow: var(--nav-text-shadow);
+		box-shadow: 0 0 1px var(--box-shadow-color);
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		box-shadow: 0 0 10px var(--box-shadow-color);
 		position: fixed;
-		left: -4vw;
+		left: -2vw;
 		bottom: 0;
 		width: 104%;
-		height: 5vh;
+		height: 12vh;
 	}
 	ul {
 		display: flex;
@@ -54,13 +66,31 @@
 		border-left: 1px dotted #ccc6;
 		opacity: 0.8;
 	}
-
+	
 	a {
 		text-decoration: none;
-		color: #fff;
 		font-size: 1.2rem;
+		animation: rainbow 15s ease infinite;
 	}
 	i {
 		margin: 0 1vw;
+	}
+
+	@keyframes rainbow {
+		0% {
+			color: var(--light-text-color-0);
+		}
+		30% {
+			color: var(--light-text-color-1);
+		}
+		50% {
+			color: var(--light-text-color-0);
+		}
+		70% {
+			color: var(--light-text-color-1);
+		}
+		100% {
+			color: var(--light-text-color-0);
+		}
 	}
 </style>

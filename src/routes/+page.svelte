@@ -37,17 +37,6 @@
 		<div class="loading_animation"></div>
 	{:else}
 		<h1> Rack Health Info</h1>
-		<div class="counters">
-			<div class="counter">
-				<h2>{hosts.length}</h2>
-				<p>Hosts</p>
-			</div>
-			<div class="counter">
-				<h2>{groups.length}</h2>
-				<p>Groups</p>
-			</div>
-		</div>
-		<div class="charts"></div>
 		<div class="table">
 			<table>
 				<thead>
@@ -74,20 +63,27 @@
 </section>
 
 <style>
+	* {
+		box-sizing: border-box;
+		font-family: var(--primary-font);
+	}
 	section {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		justify-content: center;
+		color: var(--light-text-color-0);
 	}
 
 	.loading_animation {
-		width: 100px;
-		height: 100px;
-		border: 10px solid #f3f3f3;
-		border-top: 10px solid #3498db;
+		width: 60px;
+		height: 60px;
+		border: 10px solid #c5e3ff;
+		border-top: 10px solid #67deee;
 		border-radius: 50%;
-		animation: spin 2s linear infinite;
-		opacity: 0.5;
+		box-shadow: 0 0 5px rgb(169, 239, 248);
+		animation: spin 5s linear infinite;
+		opacity: 0.7;
 	}
 
 	table {
