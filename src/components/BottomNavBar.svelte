@@ -1,5 +1,6 @@
-<script>
-
+<script lang="ts">
+    import type { LinkButtonProps } from "../types";
+    export let buttons: Array<LinkButtonProps>;
 </script>
 
 <svelte:head>
@@ -8,41 +9,25 @@
 
 <section>
     <ul id="nav-buttons">
-        <li>
-            <a href="/">
-                <i class="fas fa-home"></i>Home
-            </a>
-        </li>
-        <li>
-            <a href="/alerts">
-                <i class="fas fa-exclamation-triangle"></i>Alerts
-            </a>
-        </li>
-        <li>
-            <a href="/devices">
-                <i class="fas fa-server"></i>Devices
-            </a>
-        </li>
-        <li>
-            <a href="/support">
-                <i class="fas fa-question-circle"></i>Support
-            </a>
-        </li>
-        
+        {#each buttons as button}
+            <li>
+                <a href={button.href}>
+                    <i class={button.icon}></i>{button.text}
+                </a>
+            </li>
+        {/each}
     </ul>
 </section>
 
 <style>
-    /* Import fa icons */
-    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css');
     section {
-        background-color: #1e1e1e;
-        color: #fff;
-        font-size: 1rem;
+        background-color: var(--component-background-color);
+        color: var(--light-text-color);
+        font-size: var(--nav-font-size);
         display: flex;
         justify-content: center;
         align-items: center;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 0 10px var(--box-shadow-color);
         position: fixed;
         left: -4vw;
         bottom: 0;
@@ -64,9 +49,9 @@
         flex-direction: column;
         width: 100%;
         height: 100%;
-        border-top: 1px solid #ccc8;
-        border-right: 1px solid #ccc8;
-        border-left: 1px solid #ccc8;
+        border-top: 1px dashed #ccc6;
+        border-right: 1px dotted #ccc6;
+        border-left: 1px dotted #ccc6;
         opacity: 0.8;
     }
 
