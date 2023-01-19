@@ -39,21 +39,17 @@
 		<h1> Rack Health Info</h1>
 		<div class="table">
 			<table>
-				<thead>
-					<tr>
-						<th>Host</th>
-						<th>Group</th>
-						<th>IP</th>
-					</tr>
-				</thead>
 				<tbody>
 					{#each hosts as host}
 						<tr>
 							<td>{host.name}</td>
-							<td>{#each host.groups as group}
-								{group.name}
-								{/each}</td>
-							<td>{host.interfaces[0].ip}</td>
+							<td>
+								{#each host.items as item}
+									{#if item.name === 'Zabbix agent ping'}
+										{item.lastvalue === '1' ? 'Online' : 'Offline'}
+									{/if}
+								{/each}
+							</td>
 						</tr>
 					{/each}
 				</tbody>
@@ -89,20 +85,19 @@
 	table {
 		border-collapse: collapse;
 		width: 100%;
+		margin-bottom: 20vh;
 	}
 
 	.table {
 		margin-top: 20px;
 		table-layout: fixed;
 	}
-
-	th,
 	td {
 		text-align: left;
 		padding: 8px;
-		border: 1px solid #ddd8;
 		color: #fffc;
-		text-align: center;
+		text-align: left;
+		border-bottom: 1px solid #ddd;
 	}
 
 	@keyframes spin {
