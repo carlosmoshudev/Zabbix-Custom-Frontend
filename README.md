@@ -1,38 +1,25 @@
-# create-svelte
+# Zabbix Rack Monitoring (Custom frontend)
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+![Zabbix Rack Monitoring Version](https://img.shields.io/badge/Zabbix%20Rack%20Monitoring-1.0.3%20PROD-orange?logo=textpattern)
+![Svelte Version](https://img.shields.io/badge/Svelte-3.54-yellowgreen?logo=svelte)
+![Vite Version](https://img.shields.io/badge/Vite-4.0-yellowgreen?logo=vite)
+![Axios Version](https://img.shields.io/badge/Axios-1.2.2-yellowgreen?logo=axios)
+![Ubuntu Version](https://img.shields.io/badge/Ubuntu%20Server-20.04-blue?logo=ubuntu)
+![MySQL Version](https://img.shields.io/badge/MySQL%20Server-8.0.31-blue?logo=mysql)
+![Apache Version](https://img.shields.io/badge/Apache%202-2.4.41-blue?logo=apache)
+![Node Version](https://img.shields.io/badge/Node-18.12.1-blue?logo=node.js)
+![NPM Version](https://img.shields.io/badge/NPM-8.19.2-blue?logo=npm)
 
-## Creating a project
+![Typescript](https://img.shields.io/badge/Typescript-yellow?logo=typescript)
+![HTML](https://img.shields.io/badge/HTML%205-yellow?logo=html5)
+![CSS](https://img.shields.io/badge/CSS%203-yellow?logo=css3)
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Sobre Zabbix-Rack-Monitoring
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+Además de la instalación del frontend, será necesario:
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+- Instalar Ubuntu Server 20.04 en el equipo.
+- Instalar XPanel
+- Configurar demonio contra <http://localhost/zabbix> modo kiosk
+- Instalar Zabbix Server, mysql, y demonio de Zabbix
+  > Guía de [instalación de Zabbix](https://www.zabbix.com/download?zabbix=6.2&os_distribution=ubuntu&os_version=20.04&components=server_frontend_agent&db=mysql&ws=apache)
