@@ -1,16 +1,35 @@
-/* background is animated with parallax effect */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 :root {
+	/* Colors */
 	--background-color-0: #530083;
 	--background-color-1: #7a2a2a;
 	--background-color-2: #246e15;
-	--linear-degree: 90deg;
 
-	--particles-color-0: #000000;
-	--particles-color-1: #000000;
+	--component-background-color: #1e1e1e;
+
+	--box-shadow-color: rgba(30, 30, 30, 0.5);
+
+	--text-primary-color: #000000;
+	--text-secondary-color: #5e5e5e;
+	--text-other-color: #bababa;
+	--light-text-color: hsl(224, 44%, 95%);
+
+	--online-color: #a7c957;
+	--offline-color: #e63946;
+	--unknown-color: #f77f00;
+
+	/* Fonts */
+	--primary-font: 'Montserrat', sans-serif;
+
+	--nav-font-size: 1rem;
+
+	/* Background */
+	--background-linear-degree: 90deg;
 }
 body {
 	background: linear-gradient(
-		var(--linear-degree),
+		var(--background-linear-degree),
 		var(--background-color-0) 0%,
 		var(--background-color-1) 30%,
 		var(--background-color-2) 50%,
