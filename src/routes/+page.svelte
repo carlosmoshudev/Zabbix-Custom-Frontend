@@ -37,34 +37,19 @@
 		<div class="loading_animation"></div>
 	{:else}
 		<h1> Rack Health Info</h1>
-		<div class="counters">
-			<div class="counter">
-				<h2>{hosts.length}</h2>
-				<p>Hosts</p>
-			</div>
-			<div class="counter">
-				<h2>{groups.length}</h2>
-				<p>Groups</p>
-			</div>
-		</div>
-		<div class="charts"></div>
 		<div class="table">
 			<table>
-				<thead>
-					<tr>
-						<th>Host</th>
-						<th>Group</th>
-						<th>IP</th>
-					</tr>
-				</thead>
 				<tbody>
 					{#each hosts as host}
 						<tr>
 							<td>{host.name}</td>
-							<td>{#each host.groups as group}
-								{group.name}
-								{/each}</td>
-							<td>{host.interfaces[0].ip}</td>
+							<td>
+								{#each host.items as item}
+									{#if item.name === 'Zabbix agent ping'}
+										{item.lastvalue === '1' ? 'Online' : 'Offline'}
+									{/if}
+								{/each}
+							</td>
 						</tr>
 					{/each}
 				</tbody>
@@ -74,39 +59,46 @@
 </section>
 
 <style>
+	* {
+		box-sizing: border-box;
+		font-family: var(--primary-font);
+	}
 	section {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		justify-content: center;
+		color: var(--light-text-color-0);
 	}
 
 	.loading_animation {
-		width: 100px;
-		height: 100px;
-		border: 10px solid #f3f3f3;
-		border-top: 10px solid #3498db;
+		width: 60px;
+		height: 60px;
+		border: 10px solid #c5e3ff;
+		border-top: 10px solid #67deee;
 		border-radius: 50%;
-		animation: spin 2s linear infinite;
-		opacity: 0.5;
+		box-shadow: 0 0 5px rgb(169, 239, 248);
+		animation: spin 5s linear infinite;
+		opacity: 0.7;
 	}
 
 	table {
 		border-collapse: collapse;
 		width: 100%;
+		margin-bottom: 20vh;
 	}
 
 	.table {
 		margin-top: 20px;
 		table-layout: fixed;
 	}
-
-	th,
 	td {
 		text-align: left;
 		padding: 8px;
-		border: 1px solid #ddd8;
 		color: #fffc;
-		text-align: center;
+		text-align: left;
+		border-bottom: 1px solid #ddd;
+		padding: 0.3rem 1rem;
 	}
 
 	@keyframes spin {
