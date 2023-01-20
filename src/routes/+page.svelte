@@ -98,6 +98,7 @@
 		color: #fffc;
 		text-align: left;
 		border-bottom: 1px solid #ddd;
+		padding: 0.3rem 1rem;
 	}
 
 	@keyframes spin {
