@@ -75,9 +75,8 @@
 		flex-direction: column;
 		width: 100%;
 		height: 100%;
-		border-top: 1px dashed #ccc6;
-		border-right: 1px dotted #ccc6;
-		border-left: 1px dotted #ccc6;
+		border-right: 1px dashed #ccc6;
+		border-left: 1px dashed #ccc6;
 		opacity: 0.8;
 	}
 	.link-li:hover {
