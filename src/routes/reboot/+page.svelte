@@ -1,26 +1,6 @@
 <script lang="ts">
-	import { exec } from 'child_process';
-	import { onMount } from 'svelte';
-/*
-	onMount(() => {
-		let info = document.querySelector('.info') as HTMLParagraphElement;
-		exec('sudo reboot now', (error, stdout, stderr) => {
-			info.innerHTML = 'Rebooting...';
-			if (error) {
-				console.log(`error: ${error.message}`);
-				info.innerHTML = 'Error: ' + error.message;
-				return;
-			}
-			if (stderr) {
-				console.log(`stderr: ${stderr}`);
-				info.innerHTML = 'Error: ' + stderr;
-				return;
-			}
-			console.log(`stdout: ${stdout}`);
-			info.innerHTML = 'Doing it...' + stdout;
-		});
-	});
-	*/
+import reb from 'child_process';
+reb.exec('sudo /sbin/shutdown -r now', function (msg:unknown) { console.log(msg) });
 	
 </script>
 
