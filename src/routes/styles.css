@@ -56,3 +56,15 @@ body::-webkit-scrollbar {
 		background-position: 0% 50%;
 	}
 }
+
+.online {
+	color: var(--online-color);
+}
+
+.offline {
+	color: var(--offline-color);
+}
+
+.unknown {
+	color: var(--unknown-color);
+}

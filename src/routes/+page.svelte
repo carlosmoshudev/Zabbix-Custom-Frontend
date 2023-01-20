@@ -1,13 +1,13 @@
 <script lang="ts">
-	import type { ZabbixGroup, ZabbixHost } from '../types';
+	import type { ZabbixGroup, ZabbixHost, ZabbixItem } from '../types';
 	import { login, getHosts, getHostGroups, getGraphs } from '../methods/api';
 
 	let authToken = '';
 	let apiURL = 'http://20.229.182.95:9080//api_jsonrpc.php';
 	let hosts: Array<ZabbixHost> = [];
 	let groups: Array<ZabbixGroup> = [];
-	
-	authToken = '712d00c487267e61984018e1528fa4b735819c9666a3d2cf3d628eee66a1185b'
+
+	authToken = '712d00c487267e61984018e1528fa4b735819c9666a3d2cf3d628eee66a1185b';
 	load_hosts(authToken, apiURL);
 	load_groups(authToken, apiURL);
 
@@ -25,6 +25,16 @@
 			.then((response) => (groups = response.data.result))
 			.catch((error) => console.log(error));
 	}
+
+	function host_has_this_item(host: ZabbixHost, item_name: string) : boolean {
+		let has_item = false;
+		host.items.forEach((item) => {
+			if (item.name === item_name) {
+				has_item = true;
+			}
+		});
+		return has_item;
+	}
 </script>
 
 <svelte:head>
@@ -34,22 +44,32 @@
 <section>
 	{#if hosts.length === 0}
 		<h1>Loading hosts... Please wait</h1>
-		<div class="loading_animation"></div>
+		<div class="loading_animation" />
 	{:else}
-		<h1> Rack Health Info</h1>
+		<h1>Rack Health Info</h1>
 		<div class="table">
 			<table>
 				<tbody>
 					{#each hosts as host}
 						<tr>
 							<td>{host.name}</td>
-							<td>
-								{#each host.items as item}
-									{#if item.name === 'Zabbix agent ping'}
+							{#each host.items as item}
+								{#if item.name === 'Zabbix agent ping'}
+									<td class={item.lastvalue === '1' ? 'online' : 'offline'}>
 										{item.lastvalue === '1' ? 'Online' : 'Offline'}
-									{/if}
-								{/each}
-							</td>
+									</td>
+								{/if}
+							{/each}
+							{#each host.items as item}
+								{#if item.name === 'ICMP ping'}
+									<td class={item.lastvalue === '1' ? 'online' : 'offline'}>
+										{item.lastvalue === '1' ? 'Online' : 'Offline'}
+									</td>
+								{/if}
+							{/each}
+							{#if !host_has_this_item(host, 'ICMP ping') && !host_has_this_item(host, 'Zabbix agent ping')}
+								<td class="unknown">Unknown</td>
+							{/if}
 						</tr>
 					{/each}
 				</tbody>
@@ -101,6 +121,18 @@
 		padding: 0.3rem 1rem;
 	}
 
+	.online {
+		color: var(--online-color);
+	}
+
+	.offline {
+		color: var(--offline-color);
+	}
+
+	.unknown {
+		color: var(--unknown-color);
+	}
+
 	@keyframes spin {
 		0% {
 			transform: rotate(0deg);
@@ -109,6 +141,4 @@
 			transform: rotate(360deg);
 		}
 	}
-
-
 </style>

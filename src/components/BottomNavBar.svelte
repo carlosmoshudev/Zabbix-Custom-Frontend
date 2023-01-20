@@ -10,25 +10,12 @@
 <section>
 	<ul id="nav-buttons">
 		{#each buttons as button}
-			<li class="link-li">
+			<li>
 				<a href={button.href}>
-					<i class={button.icon} />{button.text}
+					<i class={button.icon} /><span>{button.text}</span>
 				</a>
 			</li>
 		{/each}
-			<li class="power_menu">
-				<!-- reboot and power off -->
-				<div class="power-btn">
-					<a href="/power">
-						<i class="fas fa-power-off" />
-					</a>
-				</div>
-				<div class="reboot-btn">
-					<a href="/reboot">
-						<i class="fas fa-sync-alt" />
-					</a>
-				</div>
-			</li>
 	</ul>
 </section>
 
@@ -58,7 +45,7 @@
 		bottom: 0;
 		width: 104%;
 		height: 12vh;
-		filter: drop-shadow(0 0 0.2rem crimson); 
+		filter: drop-shadow(0 2px 0.1rem #a7c957);
 	}
 	ul {
 		display: flex;
@@ -79,44 +66,8 @@
 		border-left: 1px dashed #ccc6;
 		opacity: 0.8;
 	}
-	.link-li:hover {
+	li:hover {
 		opacity: 1;
-	}
-
-	.power_menu {
-		display: flex;
-		flex-direction: row;
-		justify-content: safe center;
-		align-items: center;
-		width: 70%;
-		height: 100%;
-	}
-
-	.power-btn, .reboot-btn {
-		border-radius: 20%;
-		height: 7vh;
-		margin: 0 1vw;
-	}
-	.power-btn {
-		width: 7vh;
-		margin: 0;
-		background-image: linear-gradient(
-			to right top,
-			var(--component-background-color-0) 0%,
-			var(--component-background-color-1) 15%,
-			var(--offline-color) 85%,
-			var(--light-text-color-0) 100%
-		);
-	}
-	.reboot-btn {
-		width: 7vh;
-		background-image: linear-gradient(
-			to right top,
-			var(--component-background-color-0) 0%,
-			var(--component-background-color-1) 15%,
-			var(--unknown-color) 85%,
-			var(--light-text-color-0) 100%
-		);
 	}
 
 	a {
@@ -130,6 +81,21 @@
 		vertical-align: bottom;
 	}
 
+	span {
+		margin: 0 1vw;
+		text-align: center;
+		font-size: 1rem;
+		letter-spacing: 0.1rem;
+	}
+
+	@media (max-width: 600px) {
+		section {
+			height: 8vh;
+		}
+		span {
+			display: none;
+		}
+	}
 	@keyframes rainbow {
 		0% {
 			color: var(--light-text-color-0);

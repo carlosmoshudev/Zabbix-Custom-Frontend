@@ -10,10 +10,10 @@
 	<footer>
 		<BottomNavBar
 			buttons={[
-				{ href: '/', text: 'Home', icon: 'fas fa-chart-line' },
-				{ href: '/alerts', text: 'Alerts', icon: 'fas fa-exclamation-triangle' },
-				{ href: '/devices', text: 'Devices', icon: 'fas fa-hdd' },
-				{ href: '/support', text: 'Support', icon: 'fas fa-headset' }
+				{ href: '/', text: 'Home', icon: 'fas fa-chart-line btn' },
+				{ href: '/alerts', text: 'Alerts', icon: 'fas fa-exclamation-triangle btn' },
+				{ href: '/devices', text: 'Devices', icon: 'fas fa-hdd btn' },
+				{ href: '/support', text: 'Support', icon: 'fas fa-headset btn' }
 			]}
 		/>
 	</footer>
