@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { exec } from 'child_process';
 	import { onMount } from 'svelte';
-
+/*
 	onMount(() => {
 		let info = document.querySelector('.info') as HTMLParagraphElement;
 		exec('sudo reboot now', (error, stdout, stderr) => {
@@ -20,7 +20,7 @@
 			info.innerHTML = 'Doing it...' + stdout;
 		});
 	});
-	
+	*/
 	
 </script>
 
