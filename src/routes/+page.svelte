@@ -1,4 +1,5 @@
 <script lang="ts">
+	import TestDashboard from './../components/testDashboard.svelte';
 	import type { ZabbixHost } from '../types';
 	import { getHosts } from '../methods/api';
 	import HostsTable from '../components/HostsTable.svelte';
@@ -30,7 +31,7 @@
 		<div class="loading_animation" />
 	{:else}
 		<div class="dashboard-stuff">
-			<div class="online_offline_charts" />
+			<TestDashboard />
 		</div>
 		<div class="table">
 			<HostsTable {hosts} />
