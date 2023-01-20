@@ -1,6 +1,6 @@
 <script lang="ts">
-	const { exec } = require('child_process');
-	exec('sudo reboot now', (error: any, stdout: any, stderr: any) => {
+	import { exec } from 'child_process';
+	exec('sudo reboot now', (error, stdout, stderr) => {
 		if (error) {
 			console.log(`error: ${error.message}`);
 			return;
