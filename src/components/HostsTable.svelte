@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type { ZabbixHost } from 'src/types';
-
 	export let hosts: Array<ZabbixHost> = [];
 
 	function host_has_this_item(host: ZabbixHost, item_name: string): boolean {
@@ -49,7 +48,6 @@
 		width: 100%;
 		margin-bottom: 20vh;
 	}
-
 	td {
 		text-align: left;
 		color: var(--light-text-color-0);
@@ -60,12 +58,14 @@
 
 	.online {
 		color: var(--online-color);
+		font-weight: 700;
 	}
 	.online::before {
 		content: '▲ ';
 	}
 	.offline {
 		color: var(--offline-color);
+		font-weight: 700;
 	}
 	.offline::before {
 		content: '▼ ';
@@ -73,9 +73,9 @@
 
 	.unknown {
 		color: var(--unknown-color);
+		font-weight: 700;
 	}
 	.unknown::before {
 		content: '⚠ ';
 	}
-
 </style>

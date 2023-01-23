@@ -21,7 +21,7 @@ export function getHosts(token: string, ZabbixApiUrl: string) {
 			output: ['name', 'hostid'],
 			selectInterfaces: ['ip'],
 			selectItems: ['name', 'lastvalue'],
-			selectGraphs: ['name'],
+			selectGraphs: 'extend',
 			selectGroups: ['name']
 		},
 		auth: token,

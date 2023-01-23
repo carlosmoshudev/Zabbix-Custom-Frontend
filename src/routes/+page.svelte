@@ -1,5 +1,4 @@
 <script lang="ts">
-	import TestDashboard from './../components/testDashboard.svelte';
 	import type { ZabbixHost } from '../types';
 	import { getHosts } from '../methods/api';
 	import HostsTable from '../components/HostsTable.svelte';
@@ -30,9 +29,6 @@
 		<h1>Loading hosts... Please wait</h1>
 		<div class="loading_animation" />
 	{:else}
-		<div class="dashboard-stuff">
-			<TestDashboard />
-		</div>
 		<div class="table">
 			<HostsTable {hosts} />
 		</div>
@@ -65,7 +61,6 @@
 		animation: spin 5s linear infinite;
 		opacity: 0.7;
 	}
-
 	@keyframes spin {
 		0% {
 			transform: rotate(0deg);

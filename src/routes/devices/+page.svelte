@@ -1,26 +1,77 @@
+<script lang="ts">
+	import HostCard from '../../components/HostCard.svelte';
+	import type { ZabbixHost } from '../../types';
+	import { getHosts } from '../../methods/api';
+	export let hosts: Array<ZabbixHost> = [];
+	let authToken = '';
+	let apiURL = 'http://20.229.182.95:9080//api_jsonrpc.php';
+	authToken = '712d00c487267e61984018e1528fa4b735819c9666a3d2cf3d628eee66a1185b';
+	load_hosts(authToken, apiURL);
+
+	function load_hosts(token: string, url: string) {
+		getHosts(token, url)
+			.then((response) => {
+				hosts = response.data.result;
+				console.log(hosts);
+			})
+			.catch((error) => console.log(error));
+	}
+</script>
+
 <svelte:head>
 	<title>About</title>
 	<meta name="description" content="About this app" />
 </svelte:head>
 
-<div class="text-column">
-	<h1>About this app</h1>
+<section>
+	{#if hosts.length === 0}
+		<h1>Loading hosts... Please wait</h1>
+		<div class="loading_animation" />
+	{:else}
+		<div class="dashboard-stuff">
+			{#each hosts as host}
+				<HostCard {host} />
+			{/each}
+		</div>
+	{/if}
+</section>
 
-	<p>
-		This is a <a href="https://kit.svelte.dev">SvelteKit</a> app. You can make your own by typing the
-		following into your command line and following the prompts:
-	</p>
-
-	<pre>npm create svelte@latest</pre>
-
-	<p>
-		The page you're looking at is purely static HTML, with no client-side interactivity needed.
-		Because of that, we don't need to load any JavaScript. Try viewing the page's source, or opening
-		the devtools network panel and reloading.
-	</p>
-
-	<p>
-		The <a href="/sverdle">Sverdle</a> page illustrates SvelteKit's data loading and form handling. Try
-		using it with JavaScript disabled!
-	</p>
-</div>
+<style>
+	* {
+		box-sizing: border-box;
+		font-family: var(--primary-font);
+	}
+	section {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		color: var(--light-text-color-0);
+		margin-bottom: 20vh;
+	}
+	.dashboard-stuff {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+	}
+	.loading_animation {
+		width: 60px;
+		height: 60px;
+		border: 10px solid #c5e3ff;
+		border-top: 10px solid #67deee;
+		border-radius: 50%;
+		box-shadow: 0 0 5px rgb(169, 239, 248);
+		animation: spin 5s linear infinite;
+		opacity: 0.7;
+	}
+	@keyframes spin {
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+</style>

@@ -59,12 +59,23 @@ body::-webkit-scrollbar {
 
 .online {
 	color: var(--online-color);
+	font-weight: 700;
 }
-
+.online::before {
+	content: '▲ ';
+}
 .offline {
 	color: var(--offline-color);
+	font-weight: 700;
+}
+.offline::before {
+	content: '▼ ';
 }
 
 .unknown {
 	color: var(--unknown-color);
+	font-weight: 700;
+}
+.unknown::before {
+	content: '⚠ ';
 }
