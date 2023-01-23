@@ -12,19 +12,18 @@
 		getHosts(token, url)
 			.then((response) => {
 				hosts = response.data.result;
-                hosts = filterOffline(hosts);
+				hosts = filterOffline(hosts);
 				console.log(hosts);
 			})
 			.catch((error) => console.log(error));
 	}
-    function filterOffline(hosts: Array<ZabbixHost>): Array<ZabbixHost> {
+	function filterOffline(hosts: Array<ZabbixHost>): Array<ZabbixHost> {
 		let filteredHosts: Array<ZabbixHost> = [];
 		hosts.forEach((host) => {
 			host.items.forEach((item) => {
 				if (item.name === 'Zabbix agent ping' && item.lastvalue === '0') {
 					filteredHosts.push(host);
-				}
-				else if (item.name === 'ICMP ping' && item.lastvalue === '0') {
+				} else if (item.name === 'ICMP ping' && item.lastvalue === '0') {
 					filteredHosts.push(host);
 				}
 			});

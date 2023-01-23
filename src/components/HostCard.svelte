@@ -3,11 +3,10 @@
 	export let host: ZabbixHost;
 </script>
 
-<section class="modern-card-host-data">
+<section class="modern-card-host-data card">
 	<div class="head">
 		<h2>
 			{host.name}
-			<h2 />
 		</h2>
 	</div>
 	<div class="host-data">
@@ -37,6 +36,7 @@
 				{/if}
 			{/if}
 		</p>
+		<p>Operating system:</p>
 	</div>
 </section>
 
@@ -50,10 +50,16 @@
 		border-radius: 15px;
 		padding: 5px;
 		margin: 10px;
-		width: 400px;
-		height: 200px;
+		width: 45vw;
+		height: 100%;
 	}
-
+	h2 {
+		margin: 0;
+		padding: 5px 10px;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap;
+	}
 	.head {
 		width: 100%;
 		font-size: x-small;
@@ -62,9 +68,49 @@
 		text-align: center;
 	}
 
-	@media (max-width: 600px) {
+	@media (max-width: 759px) {
 		section {
 			width: 100%;
+		}
+	}
+
+	.card {
+		position: relative;
+		border-radius: 15px;
+		box-shadow: rgba(50, 185, 205, 0.25) 0px 50px 100px -20px,
+			rgba(255, 255, 255, 0.3) 0px 30px 60px -30px;
+	}
+	.card::before {
+		content: '';
+		position: absolute;
+		z-index: -1;
+		border-radius: inherit;
+		left: -1px;
+		top: -1px;
+		width: calc(100% + 1px * 2);
+		height: calc(100% + 1px * 2);
+		background-image: linear-gradient(90deg, #4edcb7, #83ea9e, #32b9cd, #32b9cd, #4edcb7);
+		background-size: 300% 200%;
+		-webkit-animation: spining 3s linear infinite alternate;
+		animation: spining 3s linear infinite alternate;
+		background-repeat: no-repeat;
+	}
+
+	@-webkit-keyframes spining {
+		0% {
+			background-position: 0% 0%;
+		}
+		100% {
+			background-position: 100% 100%;
+		}
+	}
+
+	@keyframes spining {
+		0% {
+			background-position: 0% 0%;
+		}
+		100% {
+			background-position: 100% 100%;
 		}
 	}
 </style>
