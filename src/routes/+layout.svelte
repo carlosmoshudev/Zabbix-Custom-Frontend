@@ -5,7 +5,7 @@
 
 	/* Catch gesture events */
 	onMount(() => {
-		document.addEventListener('gesturestart', (e) => {e.preventDefault(); alert('gesturestart');});
+		document.addEventListener('ontouchmove', (e) => {e.preventDefault(); alert('ontouchmove');});
 	});
 </script>
 
