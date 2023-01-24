@@ -3,11 +3,11 @@
 	export let host: ZabbixHost;
 </script>
 
-<section class="modern-card-host-data">
+<section class="modern-card-host-data card">
+	<div class="background" />
 	<div class="head">
 		<h2>
 			{host.name}
-			<h2 />
 		</h2>
 	</div>
 	<div class="host-data">
@@ -37,6 +37,17 @@
 				{/if}
 			{/if}
 		</p>
+		<p>
+			Operating system:
+			{#each host.items as item}
+				{#if item.name === 'System description'}
+					<span class={item.lastvalue.split(' ')[0]}>{item.lastvalue.split(' ')[0]}</span>
+				{/if}
+			{/each}
+			{#if host.items.filter((item) => item.name === 'System description').length === 0}
+				<span class="unknown">Unknown</span>
+			{/if}
+		</p>
 	</div>
 </section>
 
@@ -46,14 +57,24 @@
 		align-items: center;
 		justify-content: center;
 		color: var(--light-text-color-0);
-		background-image: linear-gradient(to right, #1e3c72, #2a5298);
+		background-image: linear-gradient(
+			var(--background-linear-degree),
+			var(--component-background-color-0) 0%,
+			var(--component-background-color-1) 60%
+		);
 		border-radius: 15px;
 		padding: 5px;
 		margin: 10px;
-		width: 400px;
-		height: 200px;
+		width: 45vw;
+		height: 100%;
 	}
-
+	h2 {
+		margin: 0;
+		padding: 5px 10px;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap;
+	}
 	.head {
 		width: 100%;
 		font-size: x-small;
@@ -61,8 +82,28 @@
 		border-radius: 0 0 20px 0;
 		text-align: center;
 	}
-
-	@media (max-width: 600px) {
+	.card {
+		position: relative;
+		border-radius: 15px;
+		box-shadow: 0 1px 24px rgba(50, 185, 205, 0.25), 1px 1px 0 1px rgba(255, 255, 255, 0.3),
+			-1px -1px 0 1px rgba(255, 255, 255, 0.5);
+	}
+	.card::before {
+		content: '';
+		position: absolute;
+		z-index: -1;
+		border-radius: inherit;
+		left: -1px;
+		top: -1px;
+		width: calc(100% + 1px * 2);
+		height: calc(100% + 1px * 2);
+		background-image: linear-gradient(90deg, #4edcb7, #83ea9e, #32b9cd, #32b9cd, #4edcb7);
+		-webkit-animation: card-border-spinning 3s linear infinite alternate;
+		animation: card-border-spinning 3s linear infinite alternate;
+		background-repeat: no-repeat;
+		opacity: 0.5;
+	}
+	@media (max-width: 759px) {
 		section {
 			width: 100%;
 		}

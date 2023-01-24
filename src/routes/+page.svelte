@@ -58,15 +58,7 @@
 		border-top: 10px solid #67deee;
 		border-radius: 50%;
 		box-shadow: 0 0 5px rgb(169, 239, 248);
-		animation: spin 5s linear infinite;
+		animation: loading-spinner 5s linear infinite;
 		opacity: 0.7;
-	}
-	@keyframes spin {
-		0% {
-			transform: rotate(0deg);
-		}
-		100% {
-			transform: rotate(360deg);
-		}
 	}
 </style>
