@@ -4,7 +4,6 @@
 </script>
 
 <div class="app">
-	<button>Hola</button>
 	<main>
 		<slot />
 	</main>

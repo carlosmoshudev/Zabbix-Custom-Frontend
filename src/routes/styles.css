@@ -7,25 +7,20 @@
 	--component-background-color-0: #1e1e1e;
 	--component-background-color-1: #2e2e2e;
 	--box-shadow-color: rgba(255, 255, 255, 0.5);
-
 	--text-primary-color: #000000;
 	--text-secondary-color: #5e5e5e;
 	--text-other-color: #bababa;
 	--light-text-color-0: hsl(224, 44%, 95%);
 	--light-text-color-1: hsla(198, 87%, 85%, 0.815);
-
 	--online-color: #a7c957;
 	--offline-color: #e63946;
 	--unknown-color: #f77f00;
-
 	--primary-font: 'Montserrat', sans-serif;
-
 	--nav-font-size: 1rem;
 	--nav-font-weight: 500;
 	--nav-text-shadow: 0 0 1px #fff;
-
-	/* Background */
 	--background-linear-degree: 90deg;
+	--background-size: 400% 400%;
 }
 body {
 	background: linear-gradient(
@@ -36,16 +31,16 @@ body {
 		var(--background-color-0) 70%,
 		var(--background-color-1) 100%
 	);
-	background-size: 400% 400%;
-	-webkit-animation: gradient 15s ease infinite;
-	animation: gradient 15s ease infinite;
+	background-size: var(--background-size);
+	-webkit-animation: background-gradient-position 15s ease infinite;
+	animation: background-gradient-position 15s ease infinite;
 }
 
 body::-webkit-scrollbar {
 	width: 0rem;
 }
 
-@keyframes gradient {
+@keyframes background-gradient-position {
 	0% {
 		background-position: 0% 50%;
 	}
@@ -56,7 +51,22 @@ body::-webkit-scrollbar {
 		background-position: 0% 50%;
 	}
 }
-
+@keyframes loading-spinner {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+@keyframes card-border-spinning {
+	0% {
+		background-position: 0% 0%;
+	}
+	100% {
+		background-position: 100% 100%;
+	}
+}
 .online {
 	color: var(--online-color);
 	font-weight: 700;
@@ -71,11 +81,38 @@ body::-webkit-scrollbar {
 .offline::before {
 	content: '▼ ';
 }
-
 .unknown {
 	color: var(--unknown-color);
 	font-weight: 700;
 }
 .unknown::before {
 	content: '⚠ ';
+}
+.Linux {
+	color: #f1c40f;
+	font-weight: 700;
+}
+.Linux::before {
+	content: '🐧';
+}
+.Windows {
+	color: #3498db;
+	font-weight: 700;
+}
+.Windows::before {
+	content: '💻';
+}
+.RouterOS {
+	color: #e67e22;
+	font-weight: 700;
+}
+.RouterOS::before {
+	content: '📻';
+}
+.DGS-1520-52MP {
+	color: #e67e22;
+	font-weight: 700;
+}
+.DGS-1520-52MP::before {
+	content: '📟';
 }
