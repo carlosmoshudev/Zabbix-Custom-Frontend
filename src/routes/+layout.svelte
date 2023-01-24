@@ -1,6 +1,12 @@
 <script>
+	import { onMount } from 'svelte';
 	import BottomNavBar from '../components/BottomNavBar.svelte';
 	import './styles.css';
+
+	/* Catch gesture events */
+	onMount(() => {
+		document.addEventListener('gesturestart', (e) => {e.preventDefault(); alert('gesturestart');});
+	});
 </script>
 
 <div class="app">
