@@ -85,28 +85,28 @@ body::-webkit-scrollbar {
 	font-weight: var(--large-font-weight);
 }
 .Linux::before {
-	content: '🐧';
+	content: '🐧 ';
 }
 .Windows {
 	color: #3498db;
 	font-weight: var(--large-font-weight);
 }
 .Windows::before {
-	content: '💻';
+	content: '💻 ';
 }
 .RouterOS {
 	color: #e67e22;
 	font-weight: var(--large-font-weight);
 }
 .RouterOS::before {
-	content: '📻';
+	content: '📻 ';
 }
 .DGS-1520-52MP {
 	color: #e67e22;
 	font-weight: var(--large-font-weight);
 }
 .DGS-1520-52MP::before {
-	content: '📟';
+	content: '📟 ';
 }
 
 @keyframes background-gradient-position {

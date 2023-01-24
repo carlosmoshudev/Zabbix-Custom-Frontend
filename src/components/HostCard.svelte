@@ -58,6 +58,10 @@
 </section>
 
 <style lang="css" scoped>
+	* {
+		box-sizing: var(--sizing);
+		font-family: var(--primary-font);
+	}
 	section {
 		flex-direction: column;
 		align-items: center;
@@ -108,7 +112,7 @@
 		-webkit-animation: card-border-spinning var(--small-animation-time) linear infinite alternate;
 		animation: card-border-spinning var(--small-animation-time) linear infinite alternate;
 		background-repeat: no-repeat;
-		opacity: 0.5;
+		opacity: 0.3;
 	}
 	@media (max-width: 759px) {
 		section {
