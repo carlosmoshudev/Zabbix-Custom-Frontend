@@ -1,9 +1,9 @@
 <h1>Loading hosts... Please wait</h1>
 <div class="loading_animation" />
 
-<style>
+<style lang="css">
 	* {
-		box-sizing: border-box;
+		box-sizing: var(--sizing);
 		font-family: var(--primary-font);
 		flex-direction: column;
 		align-items: center;

@@ -1,14 +1,16 @@
 <script lang="ts">
-	import type { LinkButtonProps } from '../types';
+	/* Export */
 	export let buttons: Array<LinkButtonProps>;
+	/* Types */
+	/* Import */
+	import type { LinkButtonProps } from '../types';
+	/* Fields */
+	/* Functions */
+	/* Run */
 </script>
 
-<svelte:head>
-	<meta name="description" content="bottom-bar" />
-</svelte:head>
-
 <section>
-	<ul id="nav-buttons">
+	<ul>
 		{#each buttons as button}
 			<li>
 				<a href={button.href}>
@@ -19,30 +21,30 @@
 	</ul>
 </section>
 
-<style>
+<style lang="css" scoped>
 	* {
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
+		margin: var(--zero);
+		padding: var(--zero);
+		box-sizing: var(--sizing);
 		font-family: var(--primary-font);
 	}
 	section {
 		background: linear-gradient(
-			180deg,
-			var(--component-background-color-1) 0%,
-			var(--component-background-color-0) 50%,
-			var(--component-background-color-1) 100%
+			var(--background-vertical-degree),
+			var(--component-background-color-1) var(--start-percent),
+			var(--component-background-color-0) var(--middle-percent),
+			var(--component-background-color-1) var(--end-percent)
 		);
 		font-size: var(--nav-font-size);
 		font-weight: var(--nav-font-weight);
 		text-shadow: var(--nav-text-shadow);
-		box-shadow: 0 0 1px var(--box-shadow-color);
+		box-shadow: var(--zero) var(--zero) var(--pixel) var(--box-shadow-color);
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		position: fixed;
 		left: -2vw;
-		bottom: 0;
+		bottom: var(--zero);
 		width: 104%;
 		height: 12vh;
 		filter: drop-shadow(0 2px 0.1rem #a7c957);
@@ -51,8 +53,8 @@
 		display: flex;
 		justify-content: space-around;
 		align-items: center;
-		width: 100%;
-		height: 100%;
+		width: var(--end-percent);
+		height: var(--end-percent);
 		list-style: none;
 	}
 	li {
@@ -60,10 +62,10 @@
 		justify-content: center;
 		align-items: center;
 		flex-direction: column;
-		width: 100%;
-		height: 100%;
-		border-right: 1px dashed #ccc6;
-		border-left: 1px dashed #ccc6;
+		width: var(--end-percent);
+		height: var(--end-percent);
+		border-right: var(--pixel) dashed #ccc6;
+		border-left: var(--pixel) dashed #ccc6;
 		opacity: 0.8;
 	}
 	li:hover {
@@ -72,8 +74,8 @@
 
 	a {
 		text-decoration: none;
-		font-size: 1.2rem;
-		animation: rainbow 15s ease infinite;
+		font-size: var(--font-size);
+		animation: ligth-text-blinking var(--large-animation-time) ease infinite;
 	}
 	i {
 		margin: 0 1vw;
@@ -94,23 +96,6 @@
 		}
 		span {
 			display: none;
-		}
-	}
-	@keyframes rainbow {
-		0% {
-			color: var(--light-text-color-0);
-		}
-		30% {
-			color: var(--light-text-color-1);
-		}
-		50% {
-			color: var(--light-text-color-0);
-		}
-		70% {
-			color: var(--light-text-color-1);
-		}
-		100% {
-			color: var(--light-text-color-0);
 		}
 	}
 </style>

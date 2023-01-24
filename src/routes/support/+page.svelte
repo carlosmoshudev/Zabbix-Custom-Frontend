@@ -31,12 +31,15 @@
 </div>
 
 <style>
-	@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+	* {
+		box-sizing: var(--sizing);
+		font-family: var(--primary-font);
+		color: var(--light-text-color-0);
+	}
 	.text-column {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		font-family: 'Montserrat', sans-serif;
 		font-size: 1.2rem;
 		line-height: 1.5;
 		max-width: 800px;

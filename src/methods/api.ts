@@ -1,6 +1,6 @@
-import axios from 'axios';
+import axios, { type AxiosResponse } from 'axios';
 
-export function login(ZabbixApiUrl: string) {
+export function login(ZabbixApiUrl: string): Promise<AxiosResponse<unknown, unknown>> {
 	return axios.post(ZabbixApiUrl, {
 		jsonrpc: '2.0',
 		method: 'user.login',
@@ -29,7 +29,7 @@ export function getHosts(token: string, ZabbixApiUrl: string) {
 	});
 }
 
-export function getHostGroups(token: string, ZabbixApiUrl: string) {
+export function getHostGroups(token: string, ZabbixApiUrl: string): Promise<AxiosResponse<unknown, unknown>> {
 	return axios.post(ZabbixApiUrl, {
 		jsonrpc: '2.0',
 		method: 'hostgroup.get',
@@ -41,7 +41,7 @@ export function getHostGroups(token: string, ZabbixApiUrl: string) {
 	});
 }
 
-export function getGraphs(token: string, ZabbixApiUrl: string, graphid: string) {
+export function getGraphs(token: string, ZabbixApiUrl: string, graphid: string): Promise<AxiosResponse<unknown, unknown>> {
 	return axios.post(ZabbixApiUrl, {
 		jsonrpc: '2.0',
 		method: 'graph.get',

@@ -1,16 +1,22 @@
 <script lang="ts">
-	import type { ZabbixHost } from 'src/types';
+	/* Export */
 	export let host: ZabbixHost;
+	/* Types */
+	import type { ZabbixHost } from 'src/types';
+	/* Import */
+	/* Fields */
+	/* Functions */
+	/* Run */
 </script>
 
-<section class="modern-card-host-data card">
-	<div class="background" />
-	<div class="head">
+<section id="card">
+	<div id="background" />
+	<div id="head">
 		<h2>
 			{host.name}
 		</h2>
 	</div>
-	<div class="host-data">
+	<div id="host-data">
 		<p>
 			Ping:
 			{#each host.items as item}
@@ -51,44 +57,45 @@
 	</div>
 </section>
 
-<style>
+<style lang="css" scoped>
 	section {
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
 		color: var(--light-text-color-0);
 		background-image: linear-gradient(
-			var(--background-linear-degree),
+			var(--background-vertical-degree),
 			var(--component-background-color-0) 0%,
-			var(--component-background-color-1) 60%
+			var(--component-background-color-1) 30%,
+			var(--component-background-color-0) 100%
 		);
-		border-radius: 15px;
+		border-radius: var(--base-radius);
 		padding: 5px;
 		margin: 10px;
 		width: 45vw;
-		height: 100%;
+		height: var(--end-percent);
 	}
 	h2 {
-		margin: 0;
+		margin: var(--zero);
 		padding: 5px 10px;
 		text-overflow: ellipsis;
 		overflow: hidden;
 		white-space: nowrap;
 	}
-	.head {
-		width: 100%;
+	#head {
+		width: var(--end-percent);
 		font-size: x-small;
-		border-bottom: 1px solid var(--light-text-color-0);
-		border-radius: 0 0 20px 0;
+		border-bottom: var(--pixel) solid var(--light-text-color-0);
+		border-radius: var(--zero) var(--zero) var(--base-radius) var(--zero);
 		text-align: center;
 	}
-	.card {
+	#card {
 		position: relative;
-		border-radius: 15px;
+		border-radius: var(--base-radius);
 		box-shadow: 0 1px 24px rgba(50, 185, 205, 0.25), 1px 1px 0 1px rgba(255, 255, 255, 0.3),
 			-1px -1px 0 1px rgba(255, 255, 255, 0.5);
 	}
-	.card::before {
+	#card::before {
 		content: '';
 		position: absolute;
 		z-index: -1;
@@ -98,14 +105,14 @@
 		width: calc(100% + 1px * 2);
 		height: calc(100% + 1px * 2);
 		background-image: linear-gradient(90deg, #4edcb7, #83ea9e, #32b9cd, #32b9cd, #4edcb7);
-		-webkit-animation: card-border-spinning 3s linear infinite alternate;
-		animation: card-border-spinning 3s linear infinite alternate;
+		-webkit-animation: card-border-spinning var(--small-animation-time) linear infinite alternate;
+		animation: card-border-spinning var(--small-animation-time) linear infinite alternate;
 		background-repeat: no-repeat;
 		opacity: 0.5;
 	}
 	@media (max-width: 759px) {
 		section {
-			width: 100%;
+			width: var(--end-percent);
 		}
 	}
 </style>

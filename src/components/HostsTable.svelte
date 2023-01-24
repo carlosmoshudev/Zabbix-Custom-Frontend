@@ -1,7 +1,11 @@
 <script lang="ts">
-	import type { ZabbixHost } from 'src/types';
+	/* Export */
 	export let hosts: Array<ZabbixHost> = [];
-
+	/* Types */
+	import type { ZabbixHost } from 'src/types';
+	/* Import */
+	/* Fields */
+	/* Functions */
 	function host_has_this_item(host: ZabbixHost, item_name: string): boolean {
 		let has_item = false;
 		host.items.forEach((item) => {
@@ -11,6 +15,7 @@
 		});
 		return has_item;
 	}
+	/* Run */
 </script>
 
 <section>
@@ -45,37 +50,23 @@
 <style>
 	table {
 		border-collapse: collapse;
-		width: 100%;
+		width: var(--end-percent);
 		margin-bottom: 20vh;
 	}
 	td {
 		text-align: left;
 		color: var(--light-text-color-0);
 		text-align: left;
-		border-bottom: 1px solid var(--light-text-color-0);
+		border-bottom: var(--pixel) solid var(--light-text-color-0);
 		padding: 0.3rem 5rem 0.3rem 0.3rem;
 	}
-
 	.online {
 		color: var(--online-color);
-		font-weight: 700;
-	}
-	.online::before {
-		content: '▲ ';
 	}
 	.offline {
 		color: var(--offline-color);
-		font-weight: 700;
 	}
-	.offline::before {
-		content: '▼ ';
-	}
-
 	.unknown {
 		color: var(--unknown-color);
-		font-weight: 700;
-	}
-	.unknown::before {
-		content: '⚠ ';
 	}
 </style>

@@ -1,26 +1,45 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 :root {
+	/* Units */
+	--zero: 0;
+	--pixel: 1px;
+	--font-size: 1rem;
+	--medium-font-weight: 500;
+	--large-font-weight: 700;
+	--base-radius: 1rem;
+	--sizing: border-box;
+	--small-animation-time: 0.3s;
+	--large-animation-time: 15s;
+	--start-percent: 0%;
+	--low-percent: 25%;
+	--middle-percent: 50%;
+	--high-percent: 75%;
+	--end-percent: 100%;
+	/* Background */
 	--background-color-0: #200430;
 	--background-color-1: #3f0f0f;
 	--background-color-2: #0e3106;
 	--component-background-color-0: #1e1e1e;
 	--component-background-color-1: #2e2e2e;
-	--box-shadow-color: rgba(255, 255, 255, 0.5);
+	/* Foreground */
 	--text-primary-color: #000000;
 	--text-secondary-color: #5e5e5e;
 	--text-other-color: #bababa;
 	--light-text-color-0: hsl(224, 44%, 95%);
 	--light-text-color-1: hsla(198, 87%, 85%, 0.815);
+	--background-linear-degree: 90deg;
+	--background-vertical-degree: 180deg;
+	--background-size: 400% 400%;
+	/* Font */
+	--primary-font: 'Montserrat', sans-serif;
+	/* Shadow */
+	--box-shadow-color: rgba(255, 255, 255, 0.5);
+	--nav-text-shadow: var(--zero) var(--zero) var(--pixel) var(--light-text-color-0);
+	/* Palette */
 	--online-color: #a7c957;
 	--offline-color: #e63946;
 	--unknown-color: #f77f00;
-	--primary-font: 'Montserrat', sans-serif;
-	--nav-font-size: 1rem;
-	--nav-font-weight: 500;
-	--nav-text-shadow: 0 0 1px #fff;
-	--background-linear-degree: 90deg;
-	--background-size: 400% 400%;
 }
 body {
 	background: linear-gradient(
@@ -32,12 +51,62 @@ body {
 		var(--background-color-1) 100%
 	);
 	background-size: var(--background-size);
-	-webkit-animation: background-gradient-position 15s ease infinite;
-	animation: background-gradient-position 15s ease infinite;
+	-webkit-animation: background-gradient-position var(--large-animation-time) ease infinite;
+	animation: background-gradient-position var(--large-animation-time) ease infinite;
 }
 
 body::-webkit-scrollbar {
 	width: 0rem;
+}
+
+.online {
+	color: var(--online-color);
+	font-weight: var(--large-font-weight);
+}
+.online::before {
+	content: '▲ ';
+}
+.offline {
+	color: var(--offline-color);
+	font-weight: var(--large-font-weight);
+}
+.offline::before {
+	content: '▼ ';
+}
+.unknown {
+	color: var(--unknown-color);
+	font-weight: var(--large-font-weight);
+}
+.unknown::before {
+	content: '⚠ ';
+}
+.Linux {
+	color: #f1c40f;
+	font-weight: var(--large-font-weight);
+}
+.Linux::before {
+	content: '🐧';
+}
+.Windows {
+	color: #3498db;
+	font-weight: var(--large-font-weight);
+}
+.Windows::before {
+	content: '💻';
+}
+.RouterOS {
+	color: #e67e22;
+	font-weight: var(--large-font-weight);
+}
+.RouterOS::before {
+	content: '📻';
+}
+.DGS-1520-52MP {
+	color: #e67e22;
+	font-weight: var(--large-font-weight);
+}
+.DGS-1520-52MP::before {
+	content: '📟';
 }
 
 @keyframes background-gradient-position {
@@ -67,52 +136,20 @@ body::-webkit-scrollbar {
 		background-position: 100% 100%;
 	}
 }
-.online {
-	color: var(--online-color);
-	font-weight: 700;
-}
-.online::before {
-	content: '▲ ';
-}
-.offline {
-	color: var(--offline-color);
-	font-weight: 700;
-}
-.offline::before {
-	content: '▼ ';
-}
-.unknown {
-	color: var(--unknown-color);
-	font-weight: 700;
-}
-.unknown::before {
-	content: '⚠ ';
-}
-.Linux {
-	color: #f1c40f;
-	font-weight: 700;
-}
-.Linux::before {
-	content: '🐧';
-}
-.Windows {
-	color: #3498db;
-	font-weight: 700;
-}
-.Windows::before {
-	content: '💻';
-}
-.RouterOS {
-	color: #e67e22;
-	font-weight: 700;
-}
-.RouterOS::before {
-	content: '📻';
-}
-.DGS-1520-52MP {
-	color: #e67e22;
-	font-weight: 700;
-}
-.DGS-1520-52MP::before {
-	content: '📟';
+@keyframes ligth-text-blinking {
+	0% {
+		color: var(--light-text-color-0);
+	}
+	30% {
+		color: var(--light-text-color-1);
+	}
+	50% {
+		color: var(--light-text-color-0);
+	}
+	70% {
+		color: var(--light-text-color-1);
+	}
+	100% {
+		color: var(--light-text-color-0);
+	}
 }
