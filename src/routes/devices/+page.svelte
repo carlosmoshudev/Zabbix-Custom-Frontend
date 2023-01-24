@@ -1,36 +1,36 @@
 <script lang="ts">
 	/* Export */
-	export let hosts: Array<ZabbixHost> = [];
+	export let ZabbixHostInfoCollection: Array<ZabbixHost> = [];
 	/* Types */
 	import type { ZabbixHost } from '../../types';
 	/* Import */
-	import HostCard from '../../components/HostCard.svelte';
-	import Loading from '../../components/Loading.svelte';
+	import HostCardComponent from '../../components/HostCard.svelte';
+	import LoadingComponent from '../../components/Loading.svelte';
 	import { getHosts } from '../../methods/api';
 	/* Fields */
 	let authToken = '';
 	let apiURL = 'http://20.229.182.95:9080//api_jsonrpc.php';
 	authToken = '712d00c487267e61984018e1528fa4b735819c9666a3d2cf3d628eee66a1185b';
 	/* Functions */
-	function load_hosts(token: string, url: string) {
-		getHosts(token, url)
+	function LoadHostsFromApi(oAuthToken: string, rpcApiUrl: string): void {
+		getHosts(oAuthToken, rpcApiUrl)
 			.then((response) => {
-				hosts = response.data.result;
-				console.log(hosts);
+				ZabbixHostInfoCollection = response.data.result;
+				console.log(ZabbixHostInfoCollection);
 			})
 			.catch((error) => console.log(error));
 	}
 	/* Run */
-	load_hosts(authToken, apiURL);
+	LoadHostsFromApi(authToken, apiURL);
 </script>
 
 <section>
-	{#if hosts.length === 0}
-		<Loading />
+	{#if ZabbixHostInfoCollection.length === 0}
+		<LoadingComponent />
 	{:else}
 		<div id="dashboard-stuff">
-			{#each hosts as host}
-				<HostCard {host} />
+			{#each ZabbixHostInfoCollection as host}
+				<HostCardComponent ZabbixHostInfo={host} />
 			{/each}
 		</div>
 	{/if}

@@ -1,27 +1,25 @@
 <script lang="ts">
-	/* Export */
-	export let hosts: Array<ZabbixHost> = [];
-	/* Types */
+	export let ZabbixHostInfoCollection: Array<ZabbixHost> = [];
+
 	import type { ZabbixHost } from '../../types';
-	/* Import */
-	import HostCard from '../../components/HostCard.svelte';
-	import Loading from '../../components/Loading.svelte';
+
+	import HostCardComponent from '../../components/HostCard.svelte';
+	import LoadingComponent from '../../components/Loading.svelte';
 	import { getHosts } from '../../methods/api';
-	/* Fields */
+
 	let authToken = '';
 	let apiURL = 'http://20.229.182.95:9080//api_jsonrpc.php';
-	authToken = '712d00c487267e61984018e1528fa4b735819c9666a3d2cf3d628eee66a1185b';
-	/* Functions */
-	function load_hosts(token: string, url: string) {
-		getHosts(token, url)
-		.then((response) => {
-			hosts = response.data.result;
-			hosts = filterOffline(hosts);
-			console.log(hosts);
-		})
-		.catch((error) => console.log(error));
+
+	function LoadHostsFromApi(oAuthToken: string, rpcApiUrl: string): void {
+		getHosts(oAuthToken, rpcApiUrl)
+			.then((response) => {
+				ZabbixHostInfoCollection = response.data.result;
+				ZabbixHostInfoCollection = GetOfflineHosts(ZabbixHostInfoCollection);
+				console.log(ZabbixHostInfoCollection);
+			})
+			.catch((error) => console.log(error));
 	}
-	function filterOffline(hosts: Array<ZabbixHost>): Array<ZabbixHost> {
+	function GetOfflineHosts(hosts: Array<ZabbixHost>): Array<ZabbixHost> {
 		let filteredHosts: Array<ZabbixHost> = [];
 		hosts.forEach((host) => {
 			host.items.forEach((item) => {
@@ -34,17 +32,18 @@
 		});
 		return filteredHosts;
 	}
-	/* Run */
-	load_hosts(authToken, apiURL);
+
+	authToken = '712d00c487267e61984018e1528fa4b735819c9666a3d2cf3d628eee66a1185b';
+	LoadHostsFromApi(authToken, apiURL);
 </script>
 
 <section>
-	{#if hosts.length === 0}
-		<Loading />
+	{#if ZabbixHostInfoCollection.length === 0}
+		<LoadingComponent />
 	{:else}
 		<div id="dashboard-stuff">
-			{#each hosts as host}
-				<HostCard {host} />
+			{#each ZabbixHostInfoCollection as host}
+				<HostCardComponent ZabbixHostInfo={host} />
 			{/each}
 		</div>
 	{/if}

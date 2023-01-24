@@ -1,22 +1,15 @@
 <script lang="ts">
-	/* Export */
-	export let buttons: Array<LinkButtonProps>;
-	/* Types */
-	/* Import */
+	export let LinkButtonPropsCollection: Array<LinkButtonProps>;
+
 	import type { LinkButtonProps } from '../types';
-	/* Fields */
-	/* Functions */
-	/* Run */
+
+	import NavigationButtonComponent from './NavButton.svelte';
 </script>
 
-<section>
-	<ul>
-		{#each buttons as button}
-			<li>
-				<a href={button.href}>
-					<i class={button.icon} /><span>{button.text}</span>
-				</a>
-			</li>
+<section id="element">
+	<ul id="list">
+		{#each LinkButtonPropsCollection as props}
+			<NavigationButtonComponent ButtonProps={props} />
 		{/each}
 	</ul>
 </section>
@@ -28,7 +21,7 @@
 		box-sizing: var(--sizing);
 		font-family: var(--primary-font);
 	}
-	section {
+	#element {
 		background: linear-gradient(
 			var(--background-vertical-degree),
 			var(--component-background-color-1) var(--start-percent),
@@ -49,7 +42,7 @@
 		height: 12vh;
 		filter: drop-shadow(0 2px 0.1rem #a7c957);
 	}
-	ul {
+	#list {
 		display: flex;
 		justify-content: space-around;
 		align-items: center;
@@ -57,45 +50,9 @@
 		height: var(--end-percent);
 		list-style: none;
 	}
-	li {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex-direction: column;
-		width: var(--end-percent);
-		height: var(--end-percent);
-		border-right: var(--pixel) dashed #ccc6;
-		border-left: var(--pixel) dashed #ccc6;
-		opacity: 0.8;
-	}
-	li:hover {
-		opacity: 1;
-	}
-
-	a {
-		text-decoration: none;
-		font-size: var(--font-size);
-		animation: ligth-text-blinking var(--large-animation-time) ease infinite;
-	}
-	i {
-		margin: 0 1vw;
-		text-align: center;
-		vertical-align: bottom;
-	}
-
-	span {
-		margin: 0 1vw;
-		text-align: center;
-		font-size: 1rem;
-		letter-spacing: 0.1rem;
-	}
-
 	@media (max-width: 600px) {
-		section {
+		#element {
 			height: 8vh;
-		}
-		span {
-			display: none;
 		}
 	}
 </style>

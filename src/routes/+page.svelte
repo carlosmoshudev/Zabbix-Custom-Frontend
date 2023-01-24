@@ -29,7 +29,7 @@
 		<Loading />
 	{:else}
 		<div id="table">
-			<HostsTable {hosts} />
+			<HostsTable ZabbixHostInfoCollection={hosts} />
 		</div>
 	{/if}
 </section>

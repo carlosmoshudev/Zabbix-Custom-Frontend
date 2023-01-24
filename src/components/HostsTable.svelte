@@ -1,44 +1,59 @@
 <script lang="ts">
-	/* Export */
-	export let hosts: Array<ZabbixHost> = [];
-	/* Types */
-	import type { ZabbixHost } from 'src/types';
-	/* Import */
-	/* Fields */
-	/* Functions */
-	function host_has_this_item(host: ZabbixHost, item_name: string): boolean {
-		let has_item = false;
-		host.items.forEach((item) => {
-			if (item.name === item_name) {
-				has_item = true;
+	export let ZabbixHostInfoCollection: Array<ZabbixHost> = [];
+
+	import type { ZabbixHost } from '../types';
+
+	function doesXHostHasYItem(zabbixHostInfo: ZabbixHost, zabbixHostItemName: string): boolean {
+		let hasItem = false;
+		zabbixHostInfo.items.forEach((item) => {
+			if (item.name === zabbixHostItemName) {
+				hasItem = true;
 			}
 		});
-		return has_item;
+		return hasItem;
 	}
-	/* Run */
 </script>
 
-<section>
-	<table>
-		<tbody>
-			{#each hosts as host}
+<section id="element">
+	<table id="table">
+		<tbody id="body">
+			<tr id="sticky">
+				<th>Device</th>
+				<th>Ping</th>
+				<th>System</th>
+			</tr>
+			{#each ZabbixHostInfoCollection as zabbixHost}
 				<tr>
-					<td>{host.name}</td>
-					{#each host.items as item}
+					<td>{zabbixHost.name}</td>
+					{#each zabbixHost.items as item}
 						{#if item.name === 'Zabbix agent ping'}
 							<td class={item.lastvalue === '1' ? 'online' : 'offline'}>
 								{item.lastvalue === '1' ? 'Online' : 'Offline'}
 							</td>
 						{/if}
 					{/each}
-					{#each host.items as item}
+					{#each zabbixHost.items as item}
 						{#if item.name === 'ICMP ping'}
 							<td class={item.lastvalue === '1' ? 'online' : 'offline'}>
 								{item.lastvalue === '1' ? 'Online' : 'Offline'}
 							</td>
 						{/if}
 					{/each}
-					{#if !host_has_this_item(host, 'ICMP ping') && !host_has_this_item(host, 'Zabbix agent ping')}
+					{#if !doesXHostHasYItem(zabbixHost, 'ICMP ping') && !doesXHostHasYItem(zabbixHost, 'Zabbix agent ping')}
+						<td class="unknown">Unknown</td>
+					{/if}
+					{#each zabbixHost.items as item}
+						{#if item.name === 'System description'}
+							{#if item.lastvalue.split(' ')[0] === ''}
+								<td class="unknown">Unknown</td>
+							{:else}
+								<td class={item.lastvalue.split(' ')[0]}>
+									{item.lastvalue.split(' ')[0]}
+								</td>
+							{/if}
+						{/if}
+					{/each}
+					{#if !doesXHostHasYItem(zabbixHost, 'System description')}
 						<td class="unknown">Unknown</td>
 					{/if}
 				</tr>
@@ -48,10 +63,34 @@
 </section>
 
 <style>
-	table {
+	#table {
 		border-collapse: collapse;
 		width: var(--end-percent);
 		margin-bottom: 20vh;
+	}
+	th {
+		text-align: left;
+		color: var(--light-text-color-1);
+		text-align: left;
+		border-bottom: var(--pixel) dashed var(--light-text-color-1);
+		padding: 0.3rem 5rem 0.3rem 0.3rem;
+	}
+	#sticky {
+		position: sticky;
+		top: 0;
+		width: var(--end-percent);
+
+		background: linear-gradient(
+			var(--background-linear-degree),
+			var(--background-color-1) 0%,
+			var(--background-color-0) 30%,
+			var(--background-color-2) 50%,
+			var(--background-color-1) 70%,
+			var(--background-color-0) 100%
+		);
+		background-size: var(--background-size);
+		-webkit-animation: background-gradient-position var(--large-animation-time) ease infinite;
+		animation: background-gradient-position var(--large-animation-time) ease infinite;
 	}
 	td {
 		text-align: left;

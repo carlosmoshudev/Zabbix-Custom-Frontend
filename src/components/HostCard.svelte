@@ -1,25 +1,20 @@
 <script lang="ts">
-	/* Export */
-	export let host: ZabbixHost;
-	/* Types */
-	import type { ZabbixHost } from 'src/types';
-	/* Import */
-	/* Fields */
-	/* Functions */
-	/* Run */
+	export let ZabbixHostInfo: ZabbixHost;
+
+	import type { ZabbixHost } from '../types';
 </script>
 
 <section id="card">
 	<div id="background" />
 	<div id="head">
-		<h2>
-			{host.name}
+		<h2 id="name">
+			{ZabbixHostInfo.name}
 		</h2>
 	</div>
 	<div id="host-data">
 		<p>
 			Ping:
-			{#each host.items as item}
+			{#each ZabbixHostInfo.items as item}
 				{#if item.name === 'Zabbix agent ping'}
 					{#if item.lastvalue === '1'}
 						<span class="online">Online</span>
@@ -28,7 +23,7 @@
 					{/if}
 				{/if}
 			{/each}
-			{#each host.items as item}
+			{#each ZabbixHostInfo.items as item}
 				{#if item.name === 'ICMP ping'}
 					{#if item.lastvalue === '1'}
 						<span class="online">Online</span>
@@ -37,20 +32,20 @@
 					{/if}
 				{/if}
 			{/each}
-			{#if host.items.filter((item) => item.name === 'Zabbix agent ping').length === 0}
-				{#if host.items.filter((item) => item.name === 'ICMP ping').length === 0}
+			{#if ZabbixHostInfo.items.filter((item) => item.name === 'Zabbix agent ping').length === 0}
+				{#if ZabbixHostInfo.items.filter((item) => item.name === 'ICMP ping').length === 0}
 					<span class="unknown">Unknown</span>
 				{/if}
 			{/if}
 		</p>
 		<p>
-			Operating system:
-			{#each host.items as item}
+			OS:
+			{#each ZabbixHostInfo.items as item}
 				{#if item.name === 'System description'}
 					<span class={item.lastvalue.split(' ')[0]}>{item.lastvalue.split(' ')[0]}</span>
 				{/if}
 			{/each}
-			{#if host.items.filter((item) => item.name === 'System description').length === 0}
+			{#if ZabbixHostInfo.items.filter((item) => item.name === 'System description').length === 0 || ZabbixHostInfo.items.filter((item) => item.name === 'System description')[0].lastvalue === ''}
 				<span class="unknown">Unknown</span>
 			{/if}
 		</p>
@@ -62,39 +57,18 @@
 		box-sizing: var(--sizing);
 		font-family: var(--primary-font);
 	}
-	section {
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		color: var(--light-text-color-0);
-		background-image: linear-gradient(
-			var(--background-vertical-degree),
-			var(--component-background-color-0) 0%,
-			var(--component-background-color-1) 30%,
-			var(--component-background-color-0) 100%
-		);
-		border-radius: var(--base-radius);
-		padding: 5px;
-		margin: 10px;
-		width: 45vw;
-		height: var(--end-percent);
-	}
-	h2 {
-		margin: var(--zero);
-		padding: 5px 10px;
-		text-overflow: ellipsis;
-		overflow: hidden;
-		white-space: nowrap;
-	}
-	#head {
-		width: var(--end-percent);
-		font-size: x-small;
-		border-bottom: var(--pixel) solid var(--light-text-color-0);
-		border-radius: var(--zero) var(--zero) var(--base-radius) var(--zero);
-		text-align: center;
-	}
 	#card {
 		position: relative;
+		width: 45vw;
+		height: var(--end-percent);
+		background-image: linear-gradient(
+			var(--background-vertical-degree),
+			var(--component-background-color-0) var(--start-percent),
+			var(--component-background-color-1) var(--first-third-percent),
+			var(--component-background-color-0) var(--end-percent)
+		);
+		padding: 5px 10px;
+		margin: 10px;
 		border-radius: var(--base-radius);
 		box-shadow: 0 1px 24px rgba(50, 185, 205, 0.25), 1px 1px 0 1px rgba(255, 255, 255, 0.3),
 			-1px -1px 0 1px rgba(255, 255, 255, 0.5);
@@ -112,7 +86,27 @@
 		-webkit-animation: card-border-spinning var(--small-animation-time) linear infinite alternate;
 		animation: card-border-spinning var(--small-animation-time) linear infinite alternate;
 		background-repeat: no-repeat;
-		opacity: 0.3;
+		opacity: 0.1;
+	}
+	#name {
+		margin: var(--zero);
+		padding: 5px 5px;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap;
+	}
+	#head {
+		width: var(--end-percent);
+		font-size: x-small;
+		border-bottom: var(--pixel) solid var(--light-text-color-0);
+		border-radius: var(--zero) var(--zero) var(--base-radius) var(--zero);
+		text-align: center;
+	}
+	#host-data {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		padding: 5px 50px;
 	}
 	@media (max-width: 759px) {
 		section {

@@ -5,6 +5,7 @@
 	--zero: 0;
 	--pixel: 1px;
 	--font-size: 1rem;
+	--end-page-padding: 20vw;
 	--medium-font-weight: 500;
 	--large-font-weight: 700;
 	--base-radius: 1rem;
@@ -16,6 +17,9 @@
 	--middle-percent: 50%;
 	--high-percent: 75%;
 	--end-percent: 100%;
+	--first-third-percent: 30%;
+	--second-third-percent: 60%;
+	--last-third-percent: 90%;
 	/* Background */
 	--background-color-0: #200430;
 	--background-color-1: #3f0f0f;
@@ -40,6 +44,26 @@
 	--online-color: #a7c957;
 	--offline-color: #e63946;
 	--unknown-color: #f77f00;
+
+	--online-dark-color: #76972a;
+	--offline-dark-color: #a71d1d;
+	--unknown-dark-color: #b85c00;
+
+	--online-light-color: #d0e9a8;
+	--offline-light-color: #f5a9a9;
+	--unknown-light-color: #f9c99a;
+
+	--linux-color: #f1c40f;
+	--windows-color: #3498db;
+	--network-device-color: #9b59b6;
+
+	--linux-dark-color: #c29d0f;
+	--windows-dark-color: #1f6b9e;
+	--network-device-dark-color: #6f3d86;
+
+	--linux-light-color: #f9e79f;
+	--windows-light-color: #a9cce3;
+	--network-device-light-color: #d2b4de;
 }
 body {
 	background: linear-gradient(
@@ -60,49 +84,119 @@ body::-webkit-scrollbar {
 }
 
 .online {
-	color: var(--online-color);
+	background: -webkit-linear-gradient(
+		var(--background-vertical-degree),
+		var(--online-light-color) var(--start-percent),
+		var(--online-color) var(--low-percent),
+		var(--online-color) var(--middle-percent),
+		var(--online-dark-color) var(--high-percent),
+		var(--online-dark-color) var(--end-percent)
+	);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
 	font-weight: var(--large-font-weight);
 }
 .online::before {
 	content: '▲ ';
 }
 .offline {
-	color: var(--offline-color);
+	background: -webkit-linear-gradient(
+		var(--background-vertical-degree),
+		var(--offline-light-color) var(--start-percent),
+		var(--offline-color) var(--low-percent),
+		var(--offline-color) var(--middle-percent),
+		var(--offline-dark-color) var(--high-percent),
+		var(--offline-dark-color) var(--end-percent)
+	);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
 	font-weight: var(--large-font-weight);
 }
 .offline::before {
 	content: '▼ ';
 }
 .unknown {
-	color: var(--unknown-color);
+	background: -webkit-linear-gradient(
+		var(--background-vertical-degree),
+		var(--unknown-light-color) var(--start-percent),
+		var(--unknown-color) var(--low-percent),
+		var(--unknown-color) var(--middle-percent),
+		var(--unknown-dark-color) var(--high-percent),
+		var(--unknown-dark-color) var(--end-percent)
+	);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
 	font-weight: var(--large-font-weight);
 }
 .unknown::before {
 	content: '⚠ ';
 }
 .Linux {
-	color: #f1c40f;
+	background: -webkit-linear-gradient(
+		var(--background-vertical-degree),
+		var(--linux-light-color) var(--start-percent),
+		var(--linux-color) var(--low-percent),
+		var(--linux-color) var(--middle-percent),
+		var(--linux-dark-color) var(--high-percent),
+		var(--linux-dark-color) var(--end-percent)
+	);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
 	font-weight: var(--large-font-weight);
 }
 .Linux::before {
 	content: '🐧 ';
 }
 .Windows {
-	color: #3498db;
+	background: -webkit-linear-gradient(
+		var(--background-vertical-degree),
+		var(--windows-light-color) var(--start-percent),
+		var(--windows-color) var(--low-percent),
+		var(--windows-color) var(--middle-percent),
+		var(--windows-dark-color) var(--high-percent),
+		var(--windows-dark-color) var(--end-percent)
+	);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
 	font-weight: var(--large-font-weight);
 }
 .Windows::before {
 	content: '💻 ';
 }
 .RouterOS {
-	color: #e67e22;
+	background: -webkit-linear-gradient(
+		var(--background-vertical-degree),
+		var(--network-device-light-color) var(--start-percent),
+		var(--network-device-color) var(--low-percent),
+		var(--network-device-color) var(--middle-percent),
+		var(--network-device-dark-color) var(--high-percent),
+		var(--network-device-dark-color) var(--end-percent)
+	);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
 	font-weight: var(--large-font-weight);
 }
 .RouterOS::before {
 	content: '📻 ';
 }
 .DGS-1520-52MP {
-	color: #e67e22;
+	background: -webkit-linear-gradient(
+		var(--background-vertical-degree),
+		var(--network-device-light-color) var(--start-percent),
+		var(--network-device-color) var(--low-percent),
+		var(--network-device-color) var(--middle-percent),
+		var(--network-device-dark-color) var(--high-percent),
+		var(--network-device-dark-color) var(--end-percent)
+	);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
 	font-weight: var(--large-font-weight);
 }
 .DGS-1520-52MP::before {

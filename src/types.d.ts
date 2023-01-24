@@ -1,6 +1,6 @@
 export type LinkButtonProps = {
 	text: string;
-	href: string;
+	link: string;
 	icon: string;
 };
 

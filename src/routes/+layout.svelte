@@ -1,12 +1,6 @@
-<script>
-	import { onMount } from 'svelte';
-	import BottomNavBar from '../components/BottomNavBar.svelte';
+<script lang="ts">
+	import BottomNavigationBarComponent from '../components/BottomNavBar.svelte';
 	import './styles.css';
-
-	/* Catch gesture events */
-	onMount(() => {
-		document.addEventListener('ontouchmove', (e) => {e.preventDefault(); alert('ontouchmove');});
-	});
 </script>
 
 <div class="app">
@@ -14,12 +8,12 @@
 		<slot />
 	</main>
 	<footer>
-		<BottomNavBar
-			buttons={[
-				{ href: '/', text: 'Home', icon: 'fas fa-chart-line btn' },
-				{ href: '/alerts', text: 'Alerts', icon: 'fas fa-exclamation-triangle btn' },
-				{ href: '/devices', text: 'Devices', icon: 'fas fa-hdd btn' },
-				{ href: '/support', text: 'Support', icon: 'fas fa-headset btn' }
+		<BottomNavigationBarComponent
+			LinkButtonPropsCollection={[
+				{ link: '/', text: 'Home', icon: 'fas fa-chart-line btn' },
+				{ link: '/alerts', text: 'Alerts', icon: 'fas fa-exclamation-triangle btn' },
+				{ link: '/devices', text: 'Devices', icon: 'fas fa-hdd btn' },
+				{ link: '/support', text: 'Support', icon: 'fas fa-headset btn' }
 			]}
 		/>
 	</footer>

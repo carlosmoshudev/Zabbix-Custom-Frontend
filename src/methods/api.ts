@@ -29,7 +29,10 @@ export function getHosts(token: string, ZabbixApiUrl: string) {
 	});
 }
 
-export function getHostGroups(token: string, ZabbixApiUrl: string): Promise<AxiosResponse<unknown, unknown>> {
+export function getHostGroups(
+	token: string,
+	ZabbixApiUrl: string
+): Promise<AxiosResponse<unknown, unknown>> {
 	return axios.post(ZabbixApiUrl, {
 		jsonrpc: '2.0',
 		method: 'hostgroup.get',
@@ -41,7 +44,11 @@ export function getHostGroups(token: string, ZabbixApiUrl: string): Promise<Axio
 	});
 }
 
-export function getGraphs(token: string, ZabbixApiUrl: string, graphid: string): Promise<AxiosResponse<unknown, unknown>> {
+export function getGraphs(
+	token: string,
+	ZabbixApiUrl: string,
+	graphid: string
+): Promise<AxiosResponse<unknown, unknown>> {
 	return axios.post(ZabbixApiUrl, {
 		jsonrpc: '2.0',
 		method: 'graph.get',

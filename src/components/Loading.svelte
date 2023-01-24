@@ -1,7 +1,7 @@
-<h1>Loading hosts... Please wait</h1>
-<div class="loading_animation" />
+<h1 id="title">Loading hosts... Please wait</h1>
+<div id="loading_animation" />
 
-<style lang="css">
+<style lang="css" scoped>
 	* {
 		box-sizing: var(--sizing);
 		font-family: var(--primary-font);
@@ -9,10 +9,10 @@
 		align-items: center;
 		justify-content: center;
 	}
-	h1 {
+	#title {
 		color: var(--light-text-color-0);
 	}
-	.loading_animation {
+	#loading_animation {
 		width: 60px;
 		height: 60px;
 		border: 10px solid #c5e3ff;
