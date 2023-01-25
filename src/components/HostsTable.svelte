@@ -17,11 +17,6 @@
 <section id="element">
 	<table id="table">
 		<tbody id="body">
-			<tr id="sticky">
-				<th>Device</th>
-				<th>Ping</th>
-				<th>System</th>
-			</tr>
 			{#each ZabbixHostInfoCollection as zabbixHost}
 				<tr>
 					<td>{zabbixHost.name}</td>

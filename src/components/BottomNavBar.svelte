@@ -6,13 +6,13 @@
 	import NavigationButtonComponent from './NavButton.svelte';
 </script>
 
-<section id="element">
+<footer id="element">
 	<ul id="list">
 		{#each LinkButtonPropsCollection as props}
 			<NavigationButtonComponent ButtonProps={props} />
 		{/each}
 	</ul>
-</section>
+</footer>
 
 <style lang="css" scoped>
 	* {
@@ -40,7 +40,7 @@
 		bottom: var(--zero);
 		width: 104%;
 		height: 12vh;
-		filter: drop-shadow(0 2px 0.1rem #a7c957);
+		filter: drop-shadow(0 1px 0.1rem #a7c957);
 	}
 	#list {
 		display: flex;

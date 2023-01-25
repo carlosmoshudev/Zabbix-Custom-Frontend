@@ -5,6 +5,7 @@
 	--zero: 0;
 	--pixel: 1px;
 	--font-size: 1rem;
+	--bar-height: 12vh;
 	--end-page-padding: 20vw;
 	--medium-font-weight: 500;
 	--large-font-weight: 700;
@@ -26,6 +27,8 @@
 	--background-color-2: #0e3106;
 	--component-background-color-0: #1e1e1e;
 	--component-background-color-1: #2e2e2e;
+	--component-background-light-color-0: #c3c3c3;
+	--component-background-light-color-1: #a3a3a3;
 	/* Foreground */
 	--text-primary-color: #000000;
 	--text-secondary-color: #5e5e5e;
@@ -42,28 +45,62 @@
 	--nav-text-shadow: var(--zero) var(--zero) var(--pixel) var(--light-text-color-0);
 	/* Palette */
 	--online-color: #a7c957;
-	--offline-color: #e63946;
-	--unknown-color: #f77f00;
-
+	--online-light-color: #d0e9a8;
 	--online-dark-color: #76972a;
+	--offline-color: #e63946;
+	--offline-light-color: #f5a9a9;
 	--offline-dark-color: #a71d1d;
+	--unknown-color: #f77f00;
+	--unknown-light-color: #f9c99a;
 	--unknown-dark-color: #b85c00;
 
-	--online-light-color: #d0e9a8;
-	--offline-light-color: #f5a9a9;
-	--unknown-light-color: #f9c99a;
-
 	--linux-color: #f1c40f;
-	--windows-color: #3498db;
-	--network-device-color: #9b59b6;
-
+	--linux-light-color: #f9e79f;
 	--linux-dark-color: #c29d0f;
+	--windows-color: #3498db;
+	--windows-light-color: #a9cce3;
 	--windows-dark-color: #1f6b9e;
+	--network-device-color: #9b59b6;
+	--network-device-light-color: #d2b4de;
 	--network-device-dark-color: #6f3d86;
 
-	--linux-light-color: #f9e79f;
-	--windows-light-color: #a9cce3;
-	--network-device-light-color: #d2b4de;
+	--first-set-color-0: #ef476f;
+	--first-set-light-color-0: #f9a8b3;
+	--first-set-dark-color-0: #b30000;
+	--first-set-color-1: #f78c6b;
+	--first-set-light-color-1: #f9c9b3;
+	--first-set-dark-color-1: #b35c00;
+	--first-set-color-2: #ffd166;
+	--first-set-light-color-2: #fff9b3;
+	--first-set-dark-color-2: #b3b300;
+	--first-set-color-3: #06d6a0;
+	--first-set-light-color-3: #b3f9d6;
+	--first-set-dark-color-3: #00b300;
+	--first-set-color-4: #118ab2;
+	--first-set-light-color-4: #b3d9f9;
+	--first-set-dark-color-4: #005cb3;
+	--first-set-color-5: #073b4c;
+	--first-set-light-color-5: #b3b3f9;
+	--first-set-dark-color-5: #0000b3;
+
+	--second-set-color-0: #f4f1de;
+	--second-set-light-color-0: #fff9b3;
+	--second-set-dark-color-0: #b3b300;
+	--second-set-color-1: #eab69f;
+	--second-set-light-color-1: #f9d9b3;
+	--second-set-dark-color-1: #b37c00;
+	--second-set-color-2: #e07a5f;
+	--second-set-light-color-2: #f9b3b3;
+	--second-set-dark-color-2: #b30000;
+	--second-set-color-3: #3d405b;
+	--second-set-light-color-3: #b3b3d9;
+	--second-set-dark-color-3: #0000b3;
+	--second-set-color-4: #81b29a;
+	--second-set-light-color-4: #d6f9d6;
+	--second-set-dark-color-4: #00b300;
+	--second-set-color-5: #f2cc8f;
+	--second-set-light-color-5: #fff9b3;
+	--second-set-dark-color-5: #b3b300;
 }
 body {
 	background: linear-gradient(
