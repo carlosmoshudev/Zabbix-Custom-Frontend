@@ -1,24 +1,27 @@
 <script lang="ts">
+	/*            Components           */
 	import Header from '../components/Header.svelte';
 	import BottomNavigationBarComponent from '../components/BottomNavBar.svelte';
 	import Background from '../lib/images/bg0.webp';
+	/*              Styles             */
 	import './styles.css';
 </script>
 
 <div id="app">
-	<div class="front"><Header title="AV Monitoring by TRISON" /></div>
+	<div class="front"><Header title="AV Health Info" /></div>
 	<div id="background">
 		<img src={Background} alt="background" />
 	</div>
 	<main id="main">
-		<slot />
+		<slot /><!-- This is where the content of the page will be rendered -->
 	</main>
 	<div class="front">
 		<BottomNavigationBarComponent
 			LinkButtonPropsCollection={[
-				{ link: '/', text: 'Home', icon: 'fas fa-chart-line btn' },
+				{ link: '/', text: 'Health', icon: 'fas fa-heartbeat btn' },
 				{ link: '/alerts', text: 'Alerts', icon: 'fas fa-exclamation-triangle btn' },
 				{ link: '/devices', text: 'Devices', icon: 'fas fa-hdd btn' },
+				{ link: '/table', text: 'List View', icon: 'fas fa-list btn' },
 				{ link: '/support', text: 'Support', icon: 'fas fa-headset btn' }
 			]}
 		/>
