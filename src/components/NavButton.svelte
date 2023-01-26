@@ -1,6 +1,7 @@
 <script lang="ts">
+	/*        Component Exports        */
 	export let ButtonProps: LinkButtonProps;
-
+	/*              Types              */
 	import type { LinkButtonProps } from '../types';
 </script>
 

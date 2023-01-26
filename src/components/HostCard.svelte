@@ -1,6 +1,7 @@
 <script lang="ts">
+	/*        Component Exports        */
 	export let ZabbixHostInfo: ZabbixHost;
-
+	/*              Types              */
 	import type { ZabbixHost } from '../types';
 </script>
 

@@ -1,17 +1,17 @@
 <script lang="ts">
-	/* Export */
+	/*          Route Exports          */
 	export let ZabbixHostInfoCollection: Array<ZabbixHost> = [];
-	/* Types */
+	/*              Types              */
 	import type { ZabbixHost } from '../../types';
-	/* Import */
+	/*            Components           */
 	import HostCardComponent from '../../components/HostCard.svelte';
 	import LoadingComponent from '../../components/Loading.svelte';
+	/*            API Methods          */
 	import { getHosts } from '../../methods/api';
-	/* Fields */
+	/*            API Variables        */
 	let authToken = '';
 	let apiURL = 'http://20.229.182.95:9080//api_jsonrpc.php';
-	authToken = '712d00c487267e61984018e1528fa4b735819c9666a3d2cf3d628eee66a1185b';
-	/* Functions */
+	/*            API Functions        */
 	function LoadHostsFromApi(oAuthToken: string, rpcApiUrl: string): void {
 		getHosts(oAuthToken, rpcApiUrl)
 			.then((response) => {
@@ -20,7 +20,8 @@
 			})
 			.catch((error) => console.log(error));
 	}
-	/* Run */
+	/*              Run               */
+	authToken = '712d00c487267e61984018e1528fa4b735819c9666a3d2cf3d628eee66a1185b';
 	LoadHostsFromApi(authToken, apiURL);
 </script>
 
