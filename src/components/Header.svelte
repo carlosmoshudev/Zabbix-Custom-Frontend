@@ -1,6 +1,7 @@
 <script lang="ts">
+	/*        Component Exports        */
 	export let title: string;
-
+	/*          Image Imports          */
 	import trison from '../lib/images/trison.png';
 	import customer from '../lib/images/customer.svg';
 	import zabbix from '../lib/images/zabbix.svg';
@@ -46,7 +47,7 @@
 		left: -2vw;
 		top: var(--zero);
 		width: 104%;
-		height: 12vh;
+		height: 6vh;
 		filter: drop-shadow(var(--zero) var(--zero) 0.1rem var(--online-color));
 		padding: var(--zero) 4vw;
 	}
@@ -55,10 +56,13 @@
 		width: 10vw;
 	}
 	#zabbix-logo {
-		width: 10vw;
+		width: 5vw;
+	}
+	#zabbix-logo img {
+		width: 100%;
 	}
 	#title {
-		font-size: 2vw;
+		font-size: 1.8vw;
 		font-weight: 600;
 		color: var(--component-background-color-1);
 		letter-spacing: 0.3rem;

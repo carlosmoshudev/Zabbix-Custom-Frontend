@@ -1,8 +1,9 @@
 <script lang="ts">
+	/*        Component Exports        */
 	export let ZabbixHostInfoCollection: Array<ZabbixHost> = [];
-
+	/*              Types              */
 	import type { ZabbixHost } from '../types';
-
+	/*            Functions            */
 	function doesXHostHasYItem(zabbixHostInfo: ZabbixHost, zabbixHostItemName: string): boolean {
 		let hasItem = false;
 		zabbixHostInfo.items.forEach((item) => {
@@ -62,30 +63,6 @@
 		border-collapse: collapse;
 		width: var(--end-percent);
 		margin-bottom: 20vh;
-	}
-	th {
-		text-align: left;
-		color: var(--light-text-color-1);
-		text-align: left;
-		border-bottom: var(--pixel) dashed var(--light-text-color-1);
-		padding: 0.3rem 5rem 0.3rem 0.3rem;
-	}
-	#sticky {
-		position: sticky;
-		top: 0;
-		width: var(--end-percent);
-
-		background: linear-gradient(
-			var(--background-linear-degree),
-			var(--background-color-1) 0%,
-			var(--background-color-0) 30%,
-			var(--background-color-2) 50%,
-			var(--background-color-1) 70%,
-			var(--background-color-0) 100%
-		);
-		background-size: var(--background-size);
-		-webkit-animation: background-gradient-position var(--large-animation-time) ease infinite;
-		animation: background-gradient-position var(--large-animation-time) ease infinite;
 	}
 	td {
 		text-align: left;

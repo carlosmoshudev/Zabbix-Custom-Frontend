@@ -1,8 +1,9 @@
 <script lang="ts">
+	/*        Component Exports        */
 	export let LinkButtonPropsCollection: Array<LinkButtonProps>;
-
+	/*              Types              */
 	import type { LinkButtonProps } from '../types';
-
+	/*            Components           */
 	import NavigationButtonComponent from './NavButton.svelte';
 </script>
 
@@ -40,7 +41,7 @@
 		bottom: var(--zero);
 		width: 104%;
 		height: 12vh;
-		filter: drop-shadow(0 1px 0.1rem #a7c957);
+		filter: var(--bar-shadow-filter);
 	}
 	#list {
 		display: flex;

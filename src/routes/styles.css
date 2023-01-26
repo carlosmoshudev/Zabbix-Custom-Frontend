@@ -1,7 +1,9 @@
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css'); /* Font Awesome */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap'); /* Montserrat Font */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap'); /* Fira Code Font */
+
 :root {
-	/* Units */
+	/*           Units           */
 	--zero: 0;
 	--pixel: 1px;
 	--font-size: 1rem;
@@ -21,7 +23,7 @@
 	--first-third-percent: 30%;
 	--second-third-percent: 60%;
 	--last-third-percent: 90%;
-	/* Background */
+	/* 		  Background         */
 	--background-color-0: #200430;
 	--background-color-1: #3f0f0f;
 	--background-color-2: #0e3106;
@@ -29,7 +31,7 @@
 	--component-background-color-1: #2e2e2e;
 	--component-background-light-color-0: #c3c3c3;
 	--component-background-light-color-1: #a3a3a3;
-	/* Foreground */
+	/* 		   Foreground        */
 	--text-primary-color: #000000;
 	--text-secondary-color: #5e5e5e;
 	--text-other-color: #bababa;
@@ -38,12 +40,14 @@
 	--background-linear-degree: 90deg;
 	--background-vertical-degree: 180deg;
 	--background-size: 400% 400%;
-	/* Font */
+	/* 		      Font           */
 	--primary-font: 'Montserrat', sans-serif;
-	/* Shadow */
+	--secondary-font: 'Fira Code', monospace;
+	/* 		     Shadow          */
 	--box-shadow-color: rgba(255, 255, 255, 0.5);
 	--nav-text-shadow: var(--zero) var(--zero) var(--pixel) var(--light-text-color-0);
-	/* Palette */
+	--bar-shadow-filter: drop-shadow(0 1px 0.1rem #a7c957);
+	/* 		 Color Palettes      */
 	--online-color: #a7c957;
 	--online-light-color: #d0e9a8;
 	--online-dark-color: #76972a;
@@ -103,13 +107,13 @@
 	--second-set-dark-color-5: #b3b300;
 }
 body {
-	background: linear-gradient(
+	background: -webkit-linear-gradient(
 		var(--background-linear-degree),
-		var(--background-color-0) 0%,
-		var(--background-color-1) 30%,
-		var(--background-color-2) 50%,
-		var(--background-color-0) 70%,
-		var(--background-color-1) 100%
+		var(--background-color-0) var(--start-percent),
+		var(--background-color-1) var(--first-third-percent),
+		var(--background-color-2) var(--middle-percent),
+		var(--background-color-0) var(--high-percent),
+		var(--background-color-1) var(--end-percent)
 	);
 	background-size: var(--background-size);
 	-webkit-animation: background-gradient-position var(--large-animation-time) ease infinite;
@@ -117,7 +121,7 @@ body {
 }
 
 body::-webkit-scrollbar {
-	width: 0rem;
+	width: var(--zero);
 }
 
 .online {
@@ -253,9 +257,11 @@ body::-webkit-scrollbar {
 }
 @keyframes loading-spinner {
 	0% {
+		-webkit-transform: rotate(0deg);
 		transform: rotate(0deg);
 	}
 	100% {
+		-webkit-transform: rotate(360deg);
 		transform: rotate(360deg);
 	}
 }
