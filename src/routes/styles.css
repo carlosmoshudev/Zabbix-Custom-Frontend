@@ -244,6 +244,24 @@ body::-webkit-scrollbar {
 	content: '📟 ';
 }
 
+.OK {
+	background: linear-gradient(
+		to left,
+		var(--online-light-color) var(--middle-percent),
+		var(--online-color) var(--high-percent),
+		var(--online-dark-color) var(--end-percent)
+	);
+	background-size: var(--background-size);
+}
+.DOWN {
+	background: linear-gradient(
+		to left,
+		var(--offline-light-color) var(--middle-percent),
+		var(--offline-color) var(--high-percent),
+		var(--offline-dark-color) var(--end-percent)
+	);
+	background-size: var(--background-size);
+}
 @keyframes background-gradient-position {
 	0% {
 		background-position: 0% 50%;

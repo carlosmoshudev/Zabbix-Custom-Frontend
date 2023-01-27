@@ -1,7 +1,8 @@
-import axios, { type AxiosResponse } from 'axios';
-
-export function login(ZabbixApiUrl: string): Promise<AxiosResponse<unknown, unknown>> {
-	return axios.post(ZabbixApiUrl, {
+import axios from 'axios';
+const zabbix_api_url = 'http://20.229.182.95:9080//api_jsonrpc.php';
+const zabbix_oauth_token = '712d00c487267e61984018e1528fa4b735819c9666a3d2cf3d628eee66a1185b';
+export function LogInApi() {
+	return axios.post(zabbix_api_url, {
 		jsonrpc: '2.0',
 		method: 'user.login',
 		params: {
@@ -13,8 +14,8 @@ export function login(ZabbixApiUrl: string): Promise<AxiosResponse<unknown, unkn
 	});
 }
 
-export function getHosts(token: string, ZabbixApiUrl: string) {
-	return axios.post(ZabbixApiUrl, {
+export function FetchHosts(_t: string | null = null) {
+	return axios.post(zabbix_api_url, {
 		jsonrpc: '2.0',
 		method: 'host.get',
 		params: {
@@ -22,41 +23,23 @@ export function getHosts(token: string, ZabbixApiUrl: string) {
 			selectInterfaces: ['ip'],
 			selectItems: ['name', 'lastvalue'],
 			selectGraphs: 'extend',
-			selectGroups: ['name']
+			selectGroups: ['name'],
+			selectTriggers: 'extend',
+			selectDashboards: 'extend'
 		},
-		auth: token,
+		auth: _t || zabbix_oauth_token,
 		id: 1
 	});
 }
 
-export function getHostGroups(
-	token: string,
-	ZabbixApiUrl: string
-): Promise<AxiosResponse<unknown, unknown>> {
-	return axios.post(ZabbixApiUrl, {
+export function FetchGroups(_t: string | null = null) {
+	return axios.post(zabbix_api_url, {
 		jsonrpc: '2.0',
 		method: 'hostgroup.get',
 		params: {
 			output: ['name']
 		},
-		auth: token,
-		id: 1
-	});
-}
-
-export function getGraphs(
-	token: string,
-	ZabbixApiUrl: string,
-	graphid: string
-): Promise<AxiosResponse<unknown, unknown>> {
-	return axios.post(ZabbixApiUrl, {
-		jsonrpc: '2.0',
-		method: 'graph.get',
-		params: {
-			output: 'extend',
-			graphids: graphid
-		},
-		auth: token,
+		auth: _t || zabbix_oauth_token,
 		id: 1
 	});
 }
