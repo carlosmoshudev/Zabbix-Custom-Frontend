@@ -1,23 +1,24 @@
 <script lang="ts">
-	/*		   Route Exports           */
-	export let ZabbixHostInfoCollection: Array<ZabbixHost> = [];
+	/*            Variables            */
+	let ZabbixHostInfoCollection: Array<ZabbixHost> = [];
+
 	/*              Types              */
 	import type { ZabbixHost } from '../../types';
+
 	/*            Components           */
 	import HostCardComponent from '../../components/HostCard.svelte';
 	import LoadingComponent from '../../components/Loading.svelte';
+
 	/*            API Methods          */
-	import { getHosts } from '../../methods/api';
-	/*            API Variables        */
-	let authToken = '';
-	let apiURL = 'http://20.229.182.95:9080//api_jsonrpc.php';
-	/*            API Functions        */
-	function LoadHostsFromApi(oAuthToken: string, rpcApiUrl: string): void {
-		getHosts(oAuthToken, rpcApiUrl)
+	import { FetchHosts } from '../../methods/api';
+
+	/*             Lifecycle           */
+	function Load(): void {
+		FetchHosts()
 			.then((response) => {
 				ZabbixHostInfoCollection = response.data.result;
 				ZabbixHostInfoCollection = GetOfflineHosts(ZabbixHostInfoCollection);
-				console.log(ZabbixHostInfoCollection);
+				console.log(ZabbixHostInfoCollection[0]);
 			})
 			.catch((error) => console.log(error));
 	}
@@ -34,9 +35,7 @@
 		});
 		return filteredHosts;
 	}
-	/*              Run               */
-	authToken = '712d00c487267e61984018e1528fa4b735819c9666a3d2cf3d628eee66a1185b';
-	LoadHostsFromApi(authToken, apiURL);
+	Load();
 </script>
 
 <section>

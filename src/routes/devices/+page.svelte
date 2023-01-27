@@ -1,37 +1,53 @@
 <script lang="ts">
-	/*          Route Exports          */
-	export let ZabbixHostInfoCollection: Array<ZabbixHost> = [];
+	let shallShowHostView: boolean = false;
+	let selectedHost: ZabbixHost;
+	/*            Properties           */
+	let ZabbixHostInfoCollection: Array<ZabbixHost> = [];
+
 	/*              Types              */
 	import type { ZabbixHost } from '../../types';
+
 	/*            Components           */
 	import HostCardComponent from '../../components/HostCard.svelte';
 	import LoadingComponent from '../../components/Loading.svelte';
-	/*            API Methods          */
-	import { getHosts } from '../../methods/api';
-	/*            API Variables        */
-	let authToken = '';
-	let apiURL = 'http://20.229.182.95:9080//api_jsonrpc.php';
-	/*            API Functions        */
-	function LoadHostsFromApi(oAuthToken: string, rpcApiUrl: string): void {
-		getHosts(oAuthToken, rpcApiUrl)
+	import HostView from '../../components/HostView.svelte';
+
+	/*          Import Methods         */
+	import { FetchHosts } from '../../methods/api';
+
+	/*          Define Methods         */
+	function LoadHostsFromApi(): void {
+		FetchHosts()
 			.then((response) => {
 				ZabbixHostInfoCollection = response.data.result;
-				console.log(ZabbixHostInfoCollection);
+				console.log(ZabbixHostInfoCollection[0]);
 			})
 			.catch((error) => console.log(error));
 	}
+	function onHostClick(host: ZabbixHost): void {
+		shallShowHostView = true;
+		selectedHost = host;
+		// scroll down
+		window.scrollTo(0, document.body.scrollHeight / 2);
+	}
 	/*              Run               */
-	authToken = '712d00c487267e61984018e1528fa4b735819c9666a3d2cf3d628eee66a1185b';
-	LoadHostsFromApi(authToken, apiURL);
+	LoadHostsFromApi();
 </script>
 
-<section>
+<section id="page">
+	{#if shallShowHostView}
+		<div id="host-view">
+			<HostView host={selectedHost} />
+		</div>
+	{/if}
 	{#if ZabbixHostInfoCollection.length === 0}
 		<LoadingComponent />
 	{:else}
 		<div id="dashboard-stuff">
 			{#each ZabbixHostInfoCollection as host}
-				<HostCardComponent ZabbixHostInfo={host} />
+				<div on:click={() => onHostClick(host)} on:keydown={() => onHostClick(host)}>
+					<HostCardComponent ZabbixHostInfo={host} />
+				</div>
 			{/each}
 		</div>
 	{/if}
@@ -42,7 +58,7 @@
 		box-sizing: var(--sizing);
 		font-family: var(--primary-font);
 	}
-	section {
+	#page {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -56,5 +72,15 @@
 		flex-wrap: wrap;
 		justify-content: center;
 		align-items: center;
+	}
+
+	#host-view {
+		position: sticky;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		background-color: var(--dark-background-color-0);
+		z-index: 1;
 	}
 </style>
