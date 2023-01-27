@@ -246,12 +246,12 @@
 		font-weight: 600;
 		padding: var(--zero);
 		margin: var(--zero);
-		text-shadow: 0 0 0.5rem var(--component-background-light-color-1);
+		text-shadow: 0 0 0.5rem var(--first-set-color-5);
 	}
 	div > span {
 		font-size: 1.5rem;
 		font-weight: 600;
-		text-shadow: 0 0 0.5rem var(--component-background-light-color-1);
+		text-shadow: 0 0 0.5rem var(--first-set-color-5);
 	}
 	div > div {
 		padding: var(--zero);
@@ -278,13 +278,15 @@
 		justify-content: center;
 		align-items: center;
 		height: 30vh;
+		width: 99.6%;
 		margin: 1px;
 	}
 	#left-bottom > div {
 		display: flex;
 		flex-direction: column;
+		justify-content: center;
+		align-items: space-between;
 		height: 30vh;
-		margin: 1px;
 	}
 
 	#right-top {
@@ -323,7 +325,6 @@
 		font-size: 1rem;
 		width: 100%;
 		height: 100%;
-		margin: 5px;
 	}
 
 	.subright {
@@ -335,20 +336,16 @@
 		font-size: 1rem;
 		width: 100%;
 		height: 100%;
-		margin: 5px;
 	}
 
 	.info {
-		background: linear-gradient(
-			to left,
-			var(--first-set-light-color-4) var(--second-third-percent),
-			var(--first-set-color-4) var(--high-percent),
-			var(--first-set-dark-color-4) var(--end-percent)
-		);
+		background: var(--first-set-color-4);
+		border: 1px solid black;
+		background-blend-mode: saturation;
 		background-size: var(--background-size);
 		font-size: 1.2rem;
 		font-weight: 600;
 		padding-top: var(--zero);
-		text-shadow: 0 0 0.5rem var(--component-background-light-color-1);
+		text-shadow: 0 0 0.5rem var(--first-set-color-5);
 	}
 </style>
