@@ -1,5 +1,5 @@
 <script lang="ts">
-	let shallShowHostView: boolean = false;
+	let shallShowHostView = false;
 	let selectedHost: ZabbixHost;
 	/*        Component Exports        */
 	export let ZabbixHostInfoCollection: Array<ZabbixHost> = [];
@@ -19,7 +19,6 @@
 	function onHostClick(host: ZabbixHost): void {
 		shallShowHostView = true;
 		selectedHost = host;
-		// scroll down
 		window.scrollTo(0, document.body.scrollHeight / 2);
 	}
 </script>

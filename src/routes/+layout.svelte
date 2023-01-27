@@ -10,7 +10,7 @@
 <div id="app">
 	<div class="front"><Header title="AV Health Info" /></div>
 	<div id="background">
-		<!--img src={Background} alt="background" -->
+		<img src={Background} alt="background" />
 	</div>
 	<main id="main">
 		<slot /><!-- This is where the content of the page will be rendered -->
