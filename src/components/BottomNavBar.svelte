@@ -1,8 +1,10 @@
 <script lang="ts">
 	/*        Component Exports        */
 	export let LinkButtonPropsCollection: Array<LinkButtonProps>;
+
 	/*              Types              */
 	import type { LinkButtonProps } from '../types';
+
 	/*            Components           */
 	import NavigationButtonComponent from './NavButton.svelte';
 </script>

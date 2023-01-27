@@ -1,6 +1,7 @@
 <script lang="ts">
 	/*        Component Exports        */
 	export let title: string;
+
 	/*          Image Imports          */
 	import trison from '../lib/images/trison.png';
 	import customer from '../lib/images/customer.svg';
@@ -11,12 +12,15 @@
 	<div id="trison-logo" class="logo">
 		<img src={trison} alt="trison" />
 	</div>
+
 	<h2 id="title">
 		{title}
 	</h2>
+
 	<div id="customer-logo" class="logo">
 		<img src={customer} alt="customer" />
 	</div>
+
 	<div id="zabbix-logo" class="logo">
 		<img src={zabbix} alt="zabbix" />
 	</div>
@@ -29,6 +33,7 @@
 		box-sizing: var(--sizing);
 		font-family: var(--primary-font);
 	}
+
 	#element {
 		background: linear-gradient(
 			var(--background-vertical-degree),
@@ -55,18 +60,22 @@
 	.logo img {
 		width: 10vw;
 	}
+
 	#zabbix-logo {
 		width: 5vw;
 	}
+
 	#zabbix-logo img {
 		width: 100%;
 	}
+
 	#title {
 		font-size: 1.8vw;
 		font-weight: 600;
 		color: var(--component-background-color-1);
 		letter-spacing: 0.3rem;
 	}
+
 	@media (max-width: 600px) {
 		#element {
 			height: 8vh;
