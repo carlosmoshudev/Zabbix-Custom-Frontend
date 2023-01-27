@@ -1,27 +1,27 @@
 <script lang="ts">
 	/*              Types              */
 	import type { ZabbixHost } from '../../types';
+
 	/*            Components           */
 	import HostsTable from '../../components/HostsTable.svelte';
 	import Loading from '../../components/Loading.svelte';
+
 	/*            API Methods          */
-	import { getHosts } from '../../methods/api';
+	import { FetchHosts } from '../../methods/api';
+
 	/*            API Variables        */
-	let authToken = '';
-	let apiURL = 'http://20.229.182.95:9080//api_jsonrpc.php';
 	let hosts: Array<ZabbixHost> = [];
-	/*            API Functions        */
-	function load_hosts(token: string, url: string) {
-		getHosts(token, url)
+
+	/*			  Run Code             */
+	function Load() {
+		FetchHosts()
 			.then((response) => {
 				hosts = response.data.result;
 				console.log(hosts);
 			})
 			.catch((error) => console.log(error));
 	}
-	/*              Run               */
-	authToken = '712d00c487267e61984018e1528fa4b735819c9666a3d2cf3d628eee66a1185b';
-	load_hosts(authToken, apiURL);
+	Load();
 </script>
 
 <section>

@@ -1,6 +1,9 @@
 <script lang="ts">
+	let shallShowHostView: boolean = false;
+	let selectedHost: ZabbixHost;
 	/*        Component Exports        */
 	export let ZabbixHostInfoCollection: Array<ZabbixHost> = [];
+	import HostView from '../components/HostView.svelte';
 	/*              Types              */
 	import type { ZabbixHost } from '../types';
 	/*            Functions            */
@@ -13,13 +16,31 @@
 		});
 		return hasItem;
 	}
+	function onHostClick(host: ZabbixHost): void {
+		shallShowHostView = true;
+		selectedHost = host;
+		// scroll down
+		window.scrollTo(0, document.body.scrollHeight / 2);
+	}
 </script>
 
 <section id="element">
+	{#if shallShowHostView}
+		<div id="host-view">
+			<HostView host={selectedHost} />
+		</div>
+	{/if}
 	<table id="table">
 		<tbody id="body">
 			{#each ZabbixHostInfoCollection as zabbixHost}
-				<tr>
+				<tr
+					on:click={() => {
+						onHostClick(zabbixHost);
+					}}
+					on:keydown={() => {
+						onHostClick(zabbixHost);
+					}}
+				>
 					<td>{zabbixHost.name}</td>
 					{#each zabbixHost.items as item}
 						{#if item.name === 'Zabbix agent ping'}
@@ -79,5 +100,14 @@
 	}
 	.unknown {
 		color: var(--unknown-color);
+	}
+	#host-view {
+		position: sticky;
+		top: 20px;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		background-color: var(--dark-background-color-0);
+		z-index: 1;
 	}
 </style>
