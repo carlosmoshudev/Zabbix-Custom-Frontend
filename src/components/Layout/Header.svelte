@@ -3,9 +3,9 @@
 	export let title: string;
 
 	/*          Image Imports          */
-	import trison from '../lib/images/trison.png';
-	import customer from '../lib/images/customer.svg';
-	import zabbix from '../lib/images/zabbix.svg';
+	import trison from '../../lib/images/trison.png';
+	import customer from '../../lib/images/customer.svg';
+	import zabbix from '../../lib/images/zabbix.svg';
 </script>
 
 <header id="element">

@@ -3,10 +3,10 @@
 	export let LinkButtonPropsCollection: Array<LinkButtonProps>;
 
 	/*              Types              */
-	import type { LinkButtonProps } from '../types';
+	import type { LinkButtonProps } from '../../types';
 
-	/*            Components           */
-	import NavigationButtonComponent from './NavButton.svelte';
+	/*         Svelte Components       */
+	import NavigationButtonComponent from '../../components/Layout/NavButton.svelte';
 </script>
 
 <footer id="element">

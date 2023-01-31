@@ -45,18 +45,48 @@
 			</div>
 		</div>
 		<div id="right-top" class="info">
-			<p>CPU Cores: <span>{HealthInfo.system.cpuCores}</span></p>
-			<p>Memory: <span>{HealthInfo.system.memoryGB}</span></p>
-			<p>System Architecture: <span>{HealthInfo.system.systemArchitecture}</span></p>
-			<p>System OS: <span>{HealthInfo.system.systemOS}</span></p>
-			<p>Disk Space: <span>{HealthInfo.system.DiskSpace}</span></p>
+			<p>
+				CPU Cores:
+				<span>{HealthInfo.system.cpuCores}</span>
+			</p>
+			<p>
+				Memory:
+				<span>{HealthInfo.system.memoryGB}</span>
+			</p>
+			<p>
+				System Architecture:
+				<span>{HealthInfo.system.systemArchitecture}</span>
+			</p>
+			<p>
+				System OS:
+				<span>{HealthInfo.system.systemOS}</span>
+			</p>
+			<p>
+				Disk Space:
+				<span>{HealthInfo.system.DiskSpace}</span>
+			</p>
 		</div>
 		<div id="right-bottom" class="info">
-			<p>Link Uptime: <span>{HealthInfo.monitoring.upTime}</span></p>
-			<p>Boot Time: <span>{HealthInfo.monitoring.bootTime}</span></p>
-			<p>Interrupts per second: <span>{HealthInfo.monitoring.interrupts}</span></p>
-			<p>Users logged in: <span>{HealthInfo.monitoring.users}</span></p>
-			<p>Number of Processes: <span>{HealthInfo.monitoring.process}</span></p>
+			<p>
+				Link Uptime:
+				<span> {HealthInfo.monitoring.upTime}</span>
+			</p>
+			<p>
+				Boot Time:
+				<span>{HealthInfo.monitoring.bootTime}</span>
+			</p>
+			<p>
+				Interrupts per second:
+				<span>{HealthInfo.monitoring.interrupts}</span>
+			</p>
+			<p>
+				Users logged in:
+				<span>{HealthInfo.monitoring.users}</span>
+			</p>
+			<p>
+				Number of Processes:
+				<span>{HealthInfo.monitoring.process}</span>
+			</p>
 		</div>
 	</div>
 </section>

@@ -1,8 +1,9 @@
 <script lang="ts">
 	/*        Component Exports        */
 	export let ZabbixHostInfo: ZabbixHost;
+
 	/*              Types              */
-	import type { ZabbixHost } from '../types';
+	import type { ZabbixHost } from '../../types';
 </script>
 
 <section id="card">
@@ -47,6 +48,17 @@
 				{/if}
 			{/each}
 			{#if ZabbixHostInfo.items.filter((item) => item.name === 'System description').length === 0 || ZabbixHostInfo.items.filter((item) => item.name === 'System description')[0].lastvalue === ''}
+				<span class="unknown">Unknown</span>
+			{/if}
+		</p>
+		<p>
+			CPU Cores:
+			{#each ZabbixHostInfo.items as item}
+				{#if item.name === 'Number of CPU cores'}
+					<span class={item.lastvalue.split(' ')[0]}>{item.lastvalue.split(' ')[0]}</span>
+				{/if}
+			{/each}
+			{#if ZabbixHostInfo.items.filter((item) => item.name === 'Number of CPU cores').length === 0 || ZabbixHostInfo.items.filter((item) => item.name === 'Number of CPU cores')[0].lastvalue === ''}
 				<span class="unknown">Unknown</span>
 			{/if}
 		</p>
@@ -104,10 +116,8 @@
 		text-align: center;
 	}
 	#host-data {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		padding: 5px 50px;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
 	}
 	@media (max-width: 759px) {
 		section {

@@ -6,7 +6,7 @@
 	import type { ZabbixHost } from '../../types';
 
 	/*            Components           */
-	import HostCardComponent from '../../components/HostCard.svelte';
+	import HostCardComponent from '../../components/HostCard/HostCard.svelte';
 	import LoadingComponent from '../../components/Loading.svelte';
 
 	/*            API Methods          */

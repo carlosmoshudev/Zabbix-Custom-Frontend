@@ -1,8 +1,9 @@
 <script lang="ts">
 	/*            Components           */
-	import Header from '../components/Header.svelte';
-	import BottomNavigationBarComponent from '../components/BottomNavBar.svelte';
+	import Header from '../components/Layout/Header.svelte';
+	import BottomNavigationBarComponent from '../components/Layout/BottomNavBar.svelte';
 	import Background from '../lib/images/bg0.webp';
+
 	/*              Styles             */
 	import './styles.css';
 </script>
