@@ -1,25 +1,16 @@
 <script lang="ts">
-	export let percentaje: string;
-	export let title: string;
-	function getColor(percentaje: string): string {
-		if (Number(percentaje) >= 90) {
-			return '#00ff00';
-		} else if (Number(percentaje) >= 70) {
-			return '#ffff00';
-		} else {
-			return '#ff0000';
-		}
-	}
-	const color = getColor(percentaje);
+	/*        Component Exports        */
+	export let Title: string;
+	export let Percentaje: string;
 </script>
 
-<p>{title}</p>
+<p>{Title}</p>
 <figure class="chart animate">
 	<svg role="img" xmlns="http://www.w3.org/2000/svg">
 		<circle class="circle-background" />
 		<circle class="circle-foreground" />
 	</svg>
-	<figcaption>{percentaje}%</figcaption>
+	<figcaption>{Percentaje}%</figcaption>
 </figure>
 
 <style>

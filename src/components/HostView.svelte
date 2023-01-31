@@ -1,45 +1,49 @@
 <script lang="ts">
 	/*        Component Exports        */
-	export let host: ZabbixHost;
+	export let HostInfo: IZabbixHostInfo;
+
+	/*            Interfaces           */
+	import type { IZabbixHostInfo } from '../zabbix_interfaces';
 
 	/*              Types              */
-	import type { ZabbixHost, HostHealthInfo } from '../types';
-
-	/*         Import Functions        */
-	import Format from '../methods/hostFormat';
+	import type { HostHealthInfoType } from '../types';
 
 	/*            Functions            */
+	import { Format } from '../methods/hostFormat';
+
+	/*             Events              */
 	function refreshPage() {
 		window.location.reload();
 	}
 
-	let HealthInfo: HostHealthInfo = Format(host);
+	/*            Properties           */
+	let hostHealthInfo: HostHealthInfoType = Format(HostInfo);
 </script>
 
 <section>
 	<div id="head">
-		{host.name}
+		{HostInfo.name}
 		<div id="close" on:click={refreshPage} on:keydown={refreshPage}>X</div>
 	</div>
 	<div id="panels">
-		<div id="left-top" class={HealthInfo.ping}>
+		<div id="left-top" class={hostHealthInfo.Ping}>
 			<p>Ping Status:</p>
 			<span>
-				{HealthInfo.ping} - {HealthInfo.ip}
+				{hostHealthInfo.Ping} - {hostHealthInfo.IPAddress}
 			</span>
 		</div>
 		<div id="left-bottom">
-			<div class="subletf {HealthInfo.cpu.style}">
+			<div class="subletf {hostHealthInfo.CPU.CSS}">
 				<p>CPU Usage:</p>
-				<div class="progress-bar" style="--progress: {HealthInfo.cpu.usage}">
-					{HealthInfo.cpu.usage}
+				<div class="progress-bar" style="--progress: {hostHealthInfo.CPU.Usage}">
+					{hostHealthInfo.CPU.Usage}
 				</div>
 			</div>
-			<div class="subright {HealthInfo.memory.style}">
+			<div class="subright {hostHealthInfo.PhysicalMemory.CSS}">
 				<p>Memory Usage:</p>
 				<div class="progress-bar">
-					<div class="progress" style="--progress: {HealthInfo.memory.usage}">
-						{HealthInfo.memory.usage}
+					<div class="progress" style="--progress: {hostHealthInfo.PhysicalMemory.Usage}">
+						{hostHealthInfo.PhysicalMemory.Usage}
 					</div>
 				</div>
 			</div>
@@ -47,45 +51,45 @@
 		<div id="right-top" class="info">
 			<p>
 				CPU Cores:
-				<span>{HealthInfo.system.cpuCores}</span>
+				<span>{hostHealthInfo.system.cpuCores}</span>
 			</p>
 			<p>
 				Memory:
-				<span>{HealthInfo.system.memoryGB}</span>
+				<span>{hostHealthInfo.system.memoryGB}</span>
 			</p>
 			<p>
 				System Architecture:
-				<span>{HealthInfo.system.systemArchitecture}</span>
+				<span>{hostHealthInfo.system.systemArchitecture}</span>
 			</p>
 			<p>
 				System OS:
-				<span>{HealthInfo.system.systemOS}</span>
+				<span>{hostHealthInfo.system.systemOS}</span>
 			</p>
 			<p>
 				Disk Space:
-				<span>{HealthInfo.system.DiskSpace}</span>
+				<span>{hostHealthInfo.system.DiskSpace}</span>
 			</p>
 		</div>
 		<div id="right-bottom" class="info">
 			<p>
 				Link Uptime:
-				<span> {HealthInfo.monitoring.upTime}</span>
+				<span> {hostHealthInfo.monitoring.upTime}</span>
 			</p>
 			<p>
 				Boot Time:
-				<span>{HealthInfo.monitoring.bootTime}</span>
+				<span>{hostHealthInfo.monitoring.bootTime}</span>
 			</p>
 			<p>
 				Interrupts per second:
-				<span>{HealthInfo.monitoring.interrupts}</span>
+				<span>{hostHealthInfo.monitoring.interrupts}</span>
 			</p>
 			<p>
 				Users logged in:
-				<span>{HealthInfo.monitoring.users}</span>
+				<span>{hostHealthInfo.monitoring.users}</span>
 			</p>
 			<p>
 				Number of Processes:
-				<span>{HealthInfo.monitoring.process}</span>
+				<span>{hostHealthInfo.monitoring.process}</span>
 			</p>
 		</div>
 	</div>

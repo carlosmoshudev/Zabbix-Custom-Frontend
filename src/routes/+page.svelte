@@ -1,10 +1,14 @@
 <script lang="ts">
-	import type { ZabbixHost } from '../types';
+	/*            Properties           */
+	let ZabbixHostInfoCollection: Array<IZabbixHostInfo> = [];
+	let OnlineAndOfflineHosts: Array<boolean> = [];
+
+	/*            Interfaces           */
+	import type { IZabbixHostInfo } from '../zabbix_interfaces';
+
+	/*            Functions            */
 	import { FetchHosts } from '../methods/api';
 	import { getPingStatus } from '../methods/hostFormat';
-
-	let ZabbixHostInfoCollection: Array<ZabbixHost> = [];
-	let OnlineAndOfflineHosts: Array<boolean> = [];
 
 	function LoadHostsFromApi(): void {
 		FetchHosts()
@@ -32,6 +36,8 @@
 				tryFillOnlineAndOfflineHosts();
 			} else timeout();
 		}, 5000);
+
+	/*            Lifecycle            */
 	LoadHostsFromApi();
 	timeout();
 </script>

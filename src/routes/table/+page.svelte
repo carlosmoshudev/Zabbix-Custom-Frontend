@@ -1,18 +1,13 @@
 <script lang="ts">
-	/*              Types              */
-	import type { ZabbixHost } from '../../types';
+	/*            Interfaces           */
+	import type { IZabbixHostInfo } from '../../zabbix_interfaces';
 
-	/*            Components           */
-	import HostsTable from '../../components/HostsTable.svelte';
-	import Loading from '../../components/Loading.svelte';
+	/*         Svelte Components       */
+	import HostsTable_Component from '../../components/HostsTable.svelte';
+	import Loading_Component from '../../components/Loading.svelte';
 
-	/*            API Methods          */
+	/*            Functions            */
 	import { FetchHosts } from '../../methods/api';
-
-	/*            API Variables        */
-	let hosts: Array<ZabbixHost> = [];
-
-	/*			  Run Code             */
 	function Load() {
 		FetchHosts()
 			.then((response) => {
@@ -21,15 +16,20 @@
 			})
 			.catch((error) => console.log(error));
 	}
+
+	/*            Properties           */
+	let hosts: Array<IZabbixHostInfo> = [];
+
+	/*            Lifecycle            */
 	Load();
 </script>
 
 <section>
 	{#if hosts.length === 0}
-		<Loading />
+		<Loading_Component />
 	{:else}
 		<div id="table">
-			<HostsTable ZabbixHostInfoCollection={hosts} />
+			<HostsTable_Component ZabbixHostInfoCollection={hosts} />
 		</div>
 	{/if}
 </section>

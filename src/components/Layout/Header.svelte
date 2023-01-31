@@ -1,28 +1,28 @@
 <script lang="ts">
 	/*        Component Exports        */
-	export let title: string;
+	export let ApplicationTitle: string;
 
 	/*          Image Imports          */
-	import trison from '../../lib/images/trison.png';
-	import customer from '../../lib/images/customer.svg';
-	import zabbix from '../../lib/images/zabbix.svg';
+	import TrisonLogo from '../../lib/images/trison.png';
+	import CustomerLogo from '../../lib/images/customer.svg';
+	import ZabbixLogo from '../../lib/images/zabbix.svg';
 </script>
 
 <header id="element">
 	<div id="trison-logo" class="logo">
-		<img src={trison} alt="trison" />
+		<img src={TrisonLogo} alt="trison" />
 	</div>
 
 	<h2 id="title">
-		{title}
+		{ApplicationTitle}
 	</h2>
 
 	<div id="customer-logo" class="logo">
-		<img src={customer} alt="customer" />
+		<img src={CustomerLogo} alt="customer" />
 	</div>
 
 	<div id="zabbix-logo" class="logo">
-		<img src={zabbix} alt="zabbix" />
+		<img src={ZabbixLogo} alt="zabbix" />
 	</div>
 </header>
 

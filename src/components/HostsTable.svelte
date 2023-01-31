@@ -1,75 +1,75 @@
 <script lang="ts">
-	let shallShowHostView = false;
-	let selectedHost: ZabbixHost;
 	/*        Component Exports        */
-	export let ZabbixHostInfoCollection: Array<ZabbixHost> = [];
-	import HostView from '../components/HostView.svelte';
-	/*              Types              */
-	import type { ZabbixHost } from '../types';
+	export let ZabbixHostInfoCollection: Array<IZabbixHostInfo> = [];
+
+	/*            Interfaces           */
+	import type { IZabbixHostInfo } from '../zabbix_interfaces';
+
+	/*         Svelte Components       */
+	import HostView_Component from '../components/HostView.svelte';
+
 	/*            Functions            */
-	function doesXHostHasYItem(zabbixHostInfo: ZabbixHost, zabbixHostItemName: string): boolean {
-		let hasItem = false;
-		zabbixHostInfo.items.forEach((item) => {
-			if (item.name === zabbixHostItemName) {
-				hasItem = true;
-			}
-		});
-		return hasItem;
-	}
-	function onHostClick(host: ZabbixHost): void {
+	import { CheckHostItem } from '../methods/utils';
+
+	/*             Events              */
+	function onHostClick(host: IZabbixHostInfo): void {
 		shallShowHostView = true;
 		selectedHost = host;
 		window.scrollTo(0, document.body.scrollHeight / 2);
 	}
+
+	/*             Fields              */
+	let shallShowHostView = false;
+	let selectedHost: IZabbixHostInfo;
 </script>
 
 <section id="element">
 	{#if shallShowHostView}
 		<div id="host-view">
-			<HostView host={selectedHost} />
+			<HostView_Component HostInfo={selectedHost} />
 		</div>
 	{/if}
 	<table id="table">
 		<tbody id="body">
-			{#each ZabbixHostInfoCollection as zabbixHost}
+			{#each ZabbixHostInfoCollection as _hostInfo}
 				<tr
 					on:click={() => {
-						onHostClick(zabbixHost);
+						onHostClick(_hostInfo);
 					}}
 					on:keydown={() => {
-						onHostClick(zabbixHost);
+						onHostClick(_hostInfo);
 					}}
 				>
-					<td>{zabbixHost.name}</td>
-					{#each zabbixHost.items as item}
-						{#if item.name === 'Zabbix agent ping'}
-							<td class={item.lastvalue === '1' ? 'online' : 'offline'}>
-								{item.lastvalue === '1' ? 'Online' : 'Offline'}
+					<td>{_hostInfo.name}</td>
+					{#each _hostInfo.items as _item}
+						{#if _item.name === 'Zabbix agent ping'}
+							<td class={_item.lastvalue === '1' ? 'online' : 'offline'}>
+								{_item.lastvalue === '1' ? 'Online' : 'Offline'}
 							</td>
 						{/if}
 					{/each}
-					{#each zabbixHost.items as item}
-						{#if item.name === 'ICMP ping'}
-							<td class={item.lastvalue === '1' ? 'online' : 'offline'}>
-								{item.lastvalue === '1' ? 'Online' : 'Offline'}
+					{#each _hostInfo.items as _item}
+						{#if _item.name === 'ICMP ping'}
+							<td class={_item.lastvalue === '1' ? 'online' : 'offline'}>
+								{_item.lastvalue === '1' ? 'Online' : 'Offline'}
 							</td>
 						{/if}
 					{/each}
-					{#if !doesXHostHasYItem(zabbixHost, 'ICMP ping') && !doesXHostHasYItem(zabbixHost, 'Zabbix agent ping')}
+					{#if !CheckHostItem(_hostInfo.items, 'ICMP ping') && !CheckHostItem(_hostInfo.items, 'Zabbix agent ping')}
 						<td class="unknown">Unknown</td>
 					{/if}
-					{#each zabbixHost.items as item}
-						{#if item.name === 'System description'}
-							{#if item.lastvalue.split(' ')[0] === ''}
+					{#each _hostInfo.items as _item}
+						{#if _item.name === 'System description'}
+							{#if _item.lastvalue.split(' ')[0] === ''}
 								<td class="unknown">Unknown</td>
 							{:else}
-								<td class={item.lastvalue.split(' ')[0]}>
-									{item.lastvalue.split(' ')[0]}
+								<td class={_item.lastvalue.split(' ')[0]}>
+									{_item.lastvalue.split(' ')[0]}
 								</td>
 							{/if}
 						{/if}
 					{/each}
-					{#if !doesXHostHasYItem(zabbixHost, 'System description')}
+					{#if !CheckHostItem(_hostInfo.items, 'System description')}
 						<td class="unknown">Unknown</td>
 					{/if}
 				</tr>

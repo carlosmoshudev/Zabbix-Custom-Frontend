@@ -1,35 +1,35 @@
 <script lang="ts">
-	/*            Components           */
-	import Header from '../components/Layout/Header.svelte';
-	import BottomNavigationBarComponent from '../components/Layout/BottomNavBar.svelte';
-	import Background from '../lib/images/bg0.webp';
+	/*         Svelte Components       */
+	import Header_Component from '../components/Layout/Header.svelte';
+	import BottomNavigationBar_Component from '../components/Layout/BottomNavBar.svelte';
+	import BackgroundImage from '../lib/images/bg0.webp';
 
 	/*              Styles             */
 	import './styles.css';
 </script>
 
 <div id="app">
-	<div class="front"><Header title="AV Health Info" /></div>
+	<div class="front"><Header_Component ApplicationTitle="AV Health Info" /></div>
 	<div id="background">
-		<img src={Background} alt="background" />
+		<img src={BackgroundImage} alt="background" />
 	</div>
 	<main id="main">
 		<slot /><!-- This is where the content of the page will be rendered -->
 	</main>
 	<div class="front">
-		<BottomNavigationBarComponent
-			LinkButtonPropsCollection={[
-				{ link: '/', text: 'Health', icon: 'fas fa-heartbeat btn' },
-				{ link: '/alerts', text: 'Alerts', icon: 'fas fa-exclamation-triangle btn' },
-				{ link: '/devices', text: 'Devices', icon: 'fas fa-hdd btn' },
-				{ link: '/table', text: 'List View', icon: 'fas fa-list btn' },
-				{ link: '/support', text: 'Support', icon: 'fas fa-headset btn' }
+		<BottomNavigationBar_Component
+			LinkButtonPropertiesCollection={[
+				{ Link: '/', Text: 'Health', Icon: 'fas fa-heartbeat btn' },
+				{ Link: '/alerts', Text: 'Alerts', Icon: 'fas fa-exclamation-triangle btn' },
+				{ Link: '/devices', Text: 'Devices', Icon: 'fas fa-hdd btn' },
+				{ Link: '/table', Text: 'List View', Icon: 'fas fa-list btn' },
+				{ Link: '/support', Text: 'Support', Icon: 'fas fa-headset btn' }
 			]}
 		/>
 	</div>
 </div>
 
-<style>
+<style lang="css" scoped>
 	#app {
 		display: flex;
 		flex-direction: column;

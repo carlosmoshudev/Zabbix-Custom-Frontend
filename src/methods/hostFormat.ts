@@ -1,17 +1,24 @@
-import type { ZabbixHost, HostHealthInfo, SystemResources, MonitoringStatus } from '../types';
+import type { IZabbixHostInfo } from '../zabbix_interfaces';
 
-export function Format(host: ZabbixHost): HostHealthInfo {
+import type {
+	HostHealthInfoType,
+	SystemResourcesType,
+	MonitoringStatusType,
+	UsageType
+} from '../types';
+
+export function Format(host: IZabbixHostInfo): HostHealthInfoType {
 	return {
-		ping: getPingStatus(host),
-		ip: host.interfaces[0].ip,
-		cpu: getCpuUtilization(host),
-		memory: getMemoryUtilization(host),
+		Ping: getPingStatus(host),
+		IPAddress: host.interfaces[0].ip,
+		CPU: getCpuUtilization(host),
+		PhysicalMemory: getMemoryUtilization(host),
 		system: getSystemResources(host),
 		monitoring: getMonitoringStatus(host)
 	};
 }
 
-export function getPingStatus(host: ZabbixHost): string {
+export function getPingStatus(host: IZabbixHostInfo): string {
 	let pingStatus = 'DOWN';
 	for (const item of host.items) {
 		if (item.name === 'ICMP ping') {
@@ -30,7 +37,7 @@ export function getPingStatus(host: ZabbixHost): string {
 	return pingStatus;
 }
 
-function getCpuUtilization(host: ZabbixHost): { usage: string; style: string } {
+function getCpuUtilization(host: IZabbixHostInfo): UsageType {
 	let cpuUtilization = '0';
 	for (const item of host.items) {
 		if (item.name === 'CPU utilization') {
@@ -39,12 +46,12 @@ function getCpuUtilization(host: ZabbixHost): { usage: string; style: string } {
 	}
 	const style = Number(cpuUtilization) > 80 || Number(cpuUtilization) === 0 ? 'DOWN' : 'OK';
 	return {
-		usage: cpuUtilization,
-		style: style
+		Usage: cpuUtilization,
+		CSS: style
 	};
 }
 
-function getMemoryUtilization(host: ZabbixHost): { usage: string; style: string } {
+function getMemoryUtilization(host: IZabbixHostInfo): UsageType {
 	let memoryUtilization = '0';
 	for (const item of host.items) {
 		if (item.name === 'Memory utilization') {
@@ -53,12 +60,12 @@ function getMemoryUtilization(host: ZabbixHost): { usage: string; style: string 
 	}
 	const style = Number(memoryUtilization) > 80 || Number(memoryUtilization) === 0 ? 'DOWN' : 'OK';
 	return {
-		usage: memoryUtilization,
-		style: style
+		Usage: memoryUtilization,
+		CSS: style
 	};
 }
 
-function getSystemResources(host: ZabbixHost): SystemResources {
+function getSystemResources(host: IZabbixHostInfo): SystemResourcesType {
 	let cpuCores = '0';
 	let memoryGB = '0';
 	let systemArchitecture = '0';
@@ -99,7 +106,7 @@ function getSystemResources(host: ZabbixHost): SystemResources {
 	};
 }
 
-function getMonitoringStatus(host: ZabbixHost): MonitoringStatus {
+function getMonitoringStatus(host: IZabbixHostInfo): MonitoringStatusType {
 	let upTime = '0';
 	let bootTime = '0';
 	let interrupts = '0';

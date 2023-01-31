@@ -1,18 +1,17 @@
 <script lang="ts">
-	/*            Variables            */
-	let ZabbixHostInfoCollection: Array<ZabbixHost> = [];
+	/*            Properties           */
+	let ZabbixHostInfoCollection: Array<IZabbixHostInfo> = [];
 
-	/*              Types              */
-	import type { ZabbixHost } from '../../types';
+	/*            Interfaces           */
+	import type { IZabbixHostInfo } from '../../zabbix_interfaces';
 
-	/*            Components           */
-	import HostCardComponent from '../../components/HostCard/HostCard.svelte';
-	import LoadingComponent from '../../components/Loading.svelte';
+	/*         Svelte Components       */
+	import HostCard_Component from '../../components/HostCard/HostCard.svelte';
+	import Loading_Component from '../../components/Loading.svelte';
 
-	/*            API Methods          */
+	/*            Functions            */
 	import { FetchHosts } from '../../methods/api';
 
-	/*             Lifecycle           */
 	function Load(): void {
 		FetchHosts()
 			.then((response) => {
@@ -22,8 +21,8 @@
 			})
 			.catch((error) => console.log(error));
 	}
-	function GetOfflineHosts(hosts: Array<ZabbixHost>): Array<ZabbixHost> {
-		let filteredHosts: Array<ZabbixHost> = [];
+	function GetOfflineHosts(hosts: Array<IZabbixHostInfo>): Array<IZabbixHostInfo> {
+		let filteredHosts: Array<IZabbixHostInfo> = [];
 		hosts.forEach((host) => {
 			host.items.forEach((item) => {
 				if (item.name === 'Zabbix agent ping' && item.lastvalue === '0') {
@@ -35,16 +34,18 @@
 		});
 		return filteredHosts;
 	}
+
+	/*            Lifecycle            */
 	Load();
 </script>
 
 <section>
 	{#if ZabbixHostInfoCollection.length === 0}
-		<LoadingComponent />
+		<Loading_Component />
 	{:else}
 		<div id="dashboard-stuff">
-			{#each ZabbixHostInfoCollection as host}
-				<HostCardComponent ZabbixHostInfo={host} />
+			{#each ZabbixHostInfoCollection as _hostInfo}
+				<HostCard_Component ZabbixHostInfo={_hostInfo} />
 			{/each}
 		</div>
 	{/if}

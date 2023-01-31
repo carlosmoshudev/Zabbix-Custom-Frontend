@@ -1,14 +1,15 @@
 <script lang="ts">
 	/*        Component Exports        */
-	export let ButtonProps: LinkButtonProps;
+	export let LinkButtonProperties: LinkButtonPropertiesType;
 
 	/*              Types              */
-	import type { LinkButtonProps } from '../../types';
+	import type { LinkButtonPropertiesType } from '../../types';
 </script>
 
 <li id="element">
-	<a href={ButtonProps.link} id="link">
-		<i class={ButtonProps.icon} /><span id="text">{ButtonProps.text}</span>
+	<a href={LinkButtonProperties.Link} id="link">
+		<i class={LinkButtonProperties.Icon} />
+		<span id="text">{LinkButtonProperties.Text}</span>
 	</a>
 </li>
 

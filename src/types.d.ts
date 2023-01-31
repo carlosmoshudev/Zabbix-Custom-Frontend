@@ -1,46 +1,21 @@
-export type LinkButtonProps = {
-	text: string;
-	link: string;
-	icon: string;
+/*           Layout Types           */
+export type LinkButtonPropertiesType = {
+	Text: string;
+	Link: string;
+	Icon: string;
 };
 
-export interface ZabbixHost {
-	hostid: string;
-	name: string;
-	interfaces: ZabbixInterface[];
-	items: ZabbixItem[];
-	groups: ZabbixGroup[];
-	graphs: ZabbixGraph[];
-}
-
-export type ZabbixInterface = {
-	ip: string;
+/*          Host Types          */
+export type HostHealthInfoType = {
+	Ping: string;
+	IPAddress: string;
+	CPU: UsageType;
+	PhysicalMemory: UsageType;
+	system: SystemResourcesType;
+	monitoring: MonitoringStatusType;
 };
 
-export type ZabbixItem = {
-	name: string;
-	lastvalue: string;
-};
-
-export type ZabbixGroup = {
-	name: string;
-};
-
-export type ZabbixGraph = {
-	graphid: string;
-	name: string;
-};
-
-export type HostHealthInfo = {
-	ping: string;
-	ip: string;
-	cpu: { usage: string; style: string };
-	memory: { usage: string; style: string };
-	system: SystemResources;
-	monitoring: MonitoringStatus;
-};
-
-export type SystemResources = {
+export type SystemResourcesType = {
 	cpuCores: string;
 	memoryGB: string;
 	systemArchitecture: string;
@@ -48,10 +23,15 @@ export type SystemResources = {
 	DiskSpace: string;
 };
 
-export type MonitoringStatus = {
+export type MonitoringStatusType = {
 	upTime: string;
 	bootTime: string;
 	interrupts: string;
 	users: string;
 	process: string;
+};
+
+export type UsageType = {
+	Usage: string;
+	CSS: string;
 };

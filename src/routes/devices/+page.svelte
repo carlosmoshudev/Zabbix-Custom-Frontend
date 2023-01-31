@@ -1,21 +1,22 @@
 <script lang="ts">
-	let shallShowHostView: boolean = false;
-	let selectedHost: ZabbixHost;
+	/*             Fields              */
+	let shallShowHostView = false;
+	let selectedHost: IZabbixHostInfo;
+
 	/*            Properties           */
-	let ZabbixHostInfoCollection: Array<ZabbixHost> = [];
+	let ZabbixHostInfoCollection: Array<IZabbixHostInfo> = [];
 
-	/*              Types              */
-	import type { ZabbixHost } from '../../types';
+	/*            Interfaces           */
+	import type { IZabbixHostInfo } from '../../zabbix_interfaces';
 
-	/*            Components           */
-	import HostCardComponent from '../../components/HostCard/HostCard.svelte';
-	import LoadingComponent from '../../components/Loading.svelte';
-	import HostView from '../../components/HostView.svelte';
+	/*         Svelte Components       */
+	import HostCard_Component from '../../components/HostCard/HostCard.svelte';
+	import Loading_Component from '../../components/Loading.svelte';
+	import HostView_Component from '../../components/HostView.svelte';
 
-	/*          Import Methods         */
+	/*            Functions            */
 	import { FetchHosts } from '../../methods/api';
 
-	/*          Define Methods         */
 	function LoadHostsFromApi(): void {
 		FetchHosts()
 			.then((response) => {
@@ -24,29 +25,32 @@
 			})
 			.catch((error) => console.log(error));
 	}
-	function onHostClick(host: ZabbixHost): void {
+
+	/*             Events              */
+	function onHostClick(host: IZabbixHostInfo): void {
 		shallShowHostView = true;
 		selectedHost = host;
 		// scroll down
 		window.scrollTo(0, document.body.scrollHeight / 2);
 	}
-	/*              Run               */
+
+	/*            Lifecycle            */
 	LoadHostsFromApi();
 </script>
 
 <section id="page">
 	{#if shallShowHostView}
 		<div id="host-view">
-			<HostView host={selectedHost} />
+			<HostView_Component HostInfo={selectedHost} />
 		</div>
 	{/if}
 	{#if ZabbixHostInfoCollection.length === 0}
-		<LoadingComponent />
+		<Loading_Component />
 	{:else}
 		<div id="dashboard-stuff">
-			{#each ZabbixHostInfoCollection as host}
-				<div on:click={() => onHostClick(host)} on:keydown={() => onHostClick(host)}>
-					<HostCardComponent ZabbixHostInfo={host} />
+			{#each ZabbixHostInfoCollection as _hostInfo}
+				<div on:click={() => onHostClick(_hostInfo)} on:keydown={() => onHostClick(_hostInfo)}>
+					<HostCard_Component ZabbixHostInfo={_hostInfo} />
 				</div>
 			{/each}
 		</div>

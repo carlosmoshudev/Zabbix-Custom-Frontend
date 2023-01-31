@@ -1,18 +1,18 @@
 <script lang="ts">
 	/*        Component Exports        */
-	export let LinkButtonPropsCollection: Array<LinkButtonProps>;
+	export let LinkButtonPropertiesCollection: Array<LinkButtonPropertiesType>;
 
 	/*              Types              */
-	import type { LinkButtonProps } from '../../types';
+	import type { LinkButtonPropertiesType } from '../../types';
 
 	/*         Svelte Components       */
-	import NavigationButtonComponent from '../../components/Layout/NavButton.svelte';
+	import NavigationButton_Component from '../../components/Layout/NavButton.svelte';
 </script>
 
 <footer id="element">
 	<ul id="list">
-		{#each LinkButtonPropsCollection as props}
-			<NavigationButtonComponent ButtonProps={props} />
+		{#each LinkButtonPropertiesCollection as _properties}
+			<NavigationButton_Component LinkButtonProperties={_properties} />
 		{/each}
 	</ul>
 </footer>
