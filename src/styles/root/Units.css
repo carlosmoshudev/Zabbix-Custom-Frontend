@@ -1,0 +1,24 @@
+:root {
+	--zero: 0;
+	--pixel: 1px;
+	--font-size: 1rem;
+	--bar-height: 12vh;
+	--end-page-padding: 20vw;
+	--medium-font-weight: 500;
+	--large-font-weight: 700;
+	--base-radius: 0.3rem;
+	--sizing: border-box;
+	--small-animation-time: 0.3s;
+	--large-animation-time: 15s;
+	--start-percent: 0%;
+	--low-percent: 25%;
+	--middle-percent: 50%;
+	--high-percent: 75%;
+	--end-percent: 100%;
+	--first-third-percent: 30%;
+	--second-third-percent: 60%;
+	--last-third-percent: 90%;
+	--background-linear-degree: 90deg;
+	--background-vertical-degree: 180deg;
+	--background-size: 400% 400%;
+}

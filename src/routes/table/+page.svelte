@@ -28,9 +28,7 @@
 	{#if hosts.length === 0}
 		<Loading_Component />
 	{:else}
-		<div id="table">
-			<HostsTable_Component ZabbixHostInfoCollection={hosts} />
-		</div>
+		<HostsTable_Component ZabbixHostInfoCollection={hosts} />
 	{/if}
 </section>
 
@@ -45,8 +43,6 @@
 		align-items: center;
 		justify-content: center;
 		color: var(--light-text-color-0);
-	}
-	#table {
 		margin-top: 20px;
 		table-layout: fixed;
 	}

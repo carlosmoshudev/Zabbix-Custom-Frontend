@@ -1,0 +1,129 @@
+.online {
+	background: -webkit-linear-gradient(
+		var(--background-vertical-degree),
+		var(--online-light-color) var(--start-percent),
+		var(--online-color) var(--low-percent),
+		var(--online-color) var(--middle-percent),
+		var(--online-dark-color) var(--high-percent),
+		var(--online-dark-color) var(--end-percent)
+	);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	font-weight: var(--large-font-weight);
+}
+.online::before {
+	content: '▲ ';
+}
+.offline {
+	background: -webkit-linear-gradient(
+		var(--background-vertical-degree),
+		var(--offline-light-color) var(--start-percent),
+		var(--offline-color) var(--low-percent),
+		var(--offline-color) var(--middle-percent),
+		var(--offline-dark-color) var(--high-percent),
+		var(--offline-dark-color) var(--end-percent)
+	);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	font-weight: var(--large-font-weight);
+}
+.offline::before {
+	content: '▼ ';
+}
+.unknown {
+	background: -webkit-linear-gradient(
+		var(--background-vertical-degree),
+		var(--unknown-light-color) var(--start-percent),
+		var(--unknown-color) var(--low-percent),
+		var(--unknown-color) var(--middle-percent),
+		var(--unknown-dark-color) var(--high-percent),
+		var(--unknown-dark-color) var(--end-percent)
+	);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	font-weight: var(--large-font-weight);
+}
+.unknown::before {
+	content: '⚠ ';
+}
+.Linux {
+	background: -webkit-linear-gradient(
+		var(--background-vertical-degree),
+		var(--linux-light-color) var(--start-percent),
+		var(--linux-color) var(--low-percent),
+		var(--linux-color) var(--middle-percent),
+		var(--linux-dark-color) var(--high-percent),
+		var(--linux-dark-color) var(--end-percent)
+	);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	font-weight: var(--large-font-weight);
+}
+.Linux::before {
+	content: '🐧 ';
+}
+.Windows {
+	background: -webkit-linear-gradient(
+		var(--background-vertical-degree),
+		var(--windows-light-color) var(--start-percent),
+		var(--windows-color) var(--low-percent),
+		var(--windows-color) var(--middle-percent),
+		var(--windows-dark-color) var(--high-percent),
+		var(--windows-dark-color) var(--end-percent)
+	);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	font-weight: var(--large-font-weight);
+}
+.Windows::before {
+	content: '💻 ';
+}
+.RouterOS {
+	background: -webkit-linear-gradient(
+		var(--background-vertical-degree),
+		var(--network-device-light-color) var(--start-percent),
+		var(--network-device-color) var(--low-percent),
+		var(--network-device-color) var(--middle-percent),
+		var(--network-device-dark-color) var(--high-percent),
+		var(--network-device-dark-color) var(--end-percent)
+	);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	font-weight: var(--large-font-weight);
+}
+.RouterOS::before {
+	content: '📻 ';
+}
+.DGS-1520-52MP {
+	background: -webkit-linear-gradient(
+		var(--background-vertical-degree),
+		var(--network-device-light-color) var(--start-percent),
+		var(--network-device-color) var(--low-percent),
+		var(--network-device-color) var(--middle-percent),
+		var(--network-device-dark-color) var(--high-percent),
+		var(--network-device-dark-color) var(--end-percent)
+	);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	font-weight: var(--large-font-weight);
+}
+.DGS-1520-52MP::before {
+	content: '📟 ';
+}
+.OK {
+	background: var(--online-color);
+	border: 1px solid black;
+	background-size: var(--background-size);
+}
+.DOWN {
+	background: var(--offline-color);
+	border: 1px solid black;
+	background-size: var(--background-size);
+}

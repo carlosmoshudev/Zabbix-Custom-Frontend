@@ -1,0 +1,17 @@
+body {
+	background: -webkit-linear-gradient(
+		var(--background-linear-degree),
+		var(--background-color-0) var(--start-percent),
+		var(--background-color-1) var(--first-third-percent),
+		var(--background-color-2) var(--middle-percent),
+		var(--background-color-0) var(--high-percent),
+		var(--background-color-1) var(--end-percent)
+	);
+	background-size: var(--background-size);
+	-webkit-animation: background-gradient-position var(--large-animation-time) ease infinite;
+	animation: background-gradient-position var(--large-animation-time) ease infinite;
+}
+
+body::-webkit-scrollbar {
+	width: var(--zero);
+}

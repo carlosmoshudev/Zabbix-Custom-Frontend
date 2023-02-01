@@ -1,0 +1,46 @@
+@keyframes background-gradient-position {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+@keyframes loading-spinner {
+	0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+@keyframes card-border-spinning {
+	0% {
+		background-position: 0% 0%;
+	}
+	100% {
+		background-position: 100% 100%;
+	}
+}
+@keyframes ligth-text-blinking {
+	0% {
+		color: var(--light-text-color-0);
+	}
+	30% {
+		color: var(--light-text-color-1);
+	}
+	50% {
+		color: var(--light-text-color-0);
+	}
+	70% {
+		color: var(--light-text-color-1);
+	}
+	100% {
+		color: var(--light-text-color-0);
+	}
+}

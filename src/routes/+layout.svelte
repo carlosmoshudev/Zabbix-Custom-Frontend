@@ -5,7 +5,12 @@
 	import BackgroundImage from '../lib/images/bg0.webp';
 
 	/*              Styles             */
-	import './styles.css';
+	import '../styles/root/Colors.css';
+	import '../styles/root/Fonts.css';
+	import '../styles/root/Units.css';
+	import '../styles/elements/body.css';
+	import '../styles/classes/zabbix-status.css';
+	import '../styles/animations.css';
 </script>
 
 <div id="app">

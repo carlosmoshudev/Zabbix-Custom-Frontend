@@ -1,10 +1,10 @@
 <script lang="ts">
+	/*            Properties           */
+	let ZabbixHostInfoCollection: Array<IZabbixHostInfo> = [];
+
 	/*             Fields              */
 	let shallShowHostView = false;
 	let selectedHost: IZabbixHostInfo;
-
-	/*            Properties           */
-	let ZabbixHostInfoCollection: Array<IZabbixHostInfo> = [];
 
 	/*            Interfaces           */
 	import type { IZabbixHostInfo } from '../../zabbix_interfaces';
@@ -18,7 +18,7 @@
 	import { FetchHosts } from '../../methods/api';
 
 	function LoadHostsFromApi(): void {
-		FetchHosts()
+		FetchHosts(null, null)
 			.then((response) => {
 				ZabbixHostInfoCollection = response.data.result;
 				console.log(ZabbixHostInfoCollection[0]);
@@ -49,9 +49,7 @@
 	{:else}
 		<div id="dashboard-stuff">
 			{#each ZabbixHostInfoCollection as _hostInfo}
-				<div on:click={() => onHostClick(_hostInfo)} on:keydown={() => onHostClick(_hostInfo)}>
-					<HostCard_Component ZabbixHostInfo={_hostInfo} />
-				</div>
+				<HostCard_Component ZabbixHostInfo={_hostInfo} />
 			{/each}
 		</div>
 	{/if}
@@ -82,7 +80,7 @@
 		position: sticky;
 		top: 0;
 		left: 0;
-		width: 100vw;
+		width: 100%;
 		height: 100vh;
 		background-color: var(--dark-background-color-0);
 		z-index: 1;

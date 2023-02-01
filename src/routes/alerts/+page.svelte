@@ -39,7 +39,7 @@
 	Load();
 </script>
 
-<section>
+<section id="page">
 	{#if ZabbixHostInfoCollection.length === 0}
 		<Loading_Component />
 	{:else}
@@ -56,7 +56,7 @@
 		box-sizing: var(--sizing);
 		font-family: var(--primary-font);
 	}
-	section {
+	#page {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
