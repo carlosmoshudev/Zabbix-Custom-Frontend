@@ -10,7 +10,30 @@
 	import HostCardTargetData_Component from './HostCardTargetData.svelte';
 
 	/*        Component Constants      */
-	const DATA_TARGETS = [{ Title: 'OS', ItemCollection: ['System description'] }];
+	const ITEM_DATA_TARGETS = [
+		{
+			Title: 'OS',
+			ItemCollection: ['System description']
+		},
+		{
+			Title: 'Process Count',
+			ItemCollection: ['Number of processes']
+		}
+	];
+	const TRIGGER_DATA_TARGETS = [
+		{
+			Title: 'CPU',
+			ItemCollection: ['CPU usage']
+		},
+		{
+			Title: 'Memory',
+			ItemCollection: ['Memory usage']
+		},
+		{
+			Title: 'Disk',
+			ItemCollection: ['Disk usage']
+		}
+	];
 </script>
 
 <section id="card">
@@ -22,7 +45,7 @@
 	</div>
 	<div id="host-data">
 		<HostCardPingData_Component ItemCollection={ZabbixHostInfo.items} />
-		{#each DATA_TARGETS as _target}
+		{#each ITEM_DATA_TARGETS as _target}
 			<HostCardTargetData_Component
 				ItemCollection={ZabbixHostInfo.items}
 				Title={_target.Title}
@@ -88,7 +111,7 @@
 	}
 	@media (max-width: 759px) {
 		#card {
-			width: var(--end-percent);
+			width: 100%;
 		}
 	}
 </style>
