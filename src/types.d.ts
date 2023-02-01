@@ -35,3 +35,5 @@ export type UsageType = {
 	Usage: string;
 	CSS: string;
 };
+
+export type ItemTarget = { Title: string; ItemCollection: Array<string> };

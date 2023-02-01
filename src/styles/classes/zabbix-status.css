@@ -1,4 +1,4 @@
-.online {
+.Online {
 	background: -webkit-linear-gradient(
 		var(--background-vertical-degree),
 		var(--online-light-color) var(--start-percent),
@@ -12,10 +12,10 @@
 	-webkit-text-fill-color: transparent;
 	font-weight: var(--large-font-weight);
 }
-.online::before {
+.Online::before {
 	content: '▲ ';
 }
-.offline {
+.Offline {
 	background: -webkit-linear-gradient(
 		var(--background-vertical-degree),
 		var(--offline-light-color) var(--start-percent),
@@ -29,10 +29,10 @@
 	-webkit-text-fill-color: transparent;
 	font-weight: var(--large-font-weight);
 }
-.offline::before {
+.Offline::before {
 	content: '▼ ';
 }
-.unknown {
+.Unknown {
 	background: -webkit-linear-gradient(
 		var(--background-vertical-degree),
 		var(--unknown-light-color) var(--start-percent),
@@ -46,7 +46,7 @@
 	-webkit-text-fill-color: transparent;
 	font-weight: var(--large-font-weight);
 }
-.unknown::before {
+.Unknown::before {
 	content: '⚠ ';
 }
 .Linux {

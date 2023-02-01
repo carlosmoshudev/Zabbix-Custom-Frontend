@@ -15,3 +15,49 @@ body {
 body::-webkit-scrollbar {
 	width: var(--zero);
 }
+
+footer {
+	background: linear-gradient(
+		var(--background-vertical-degree),
+		var(--component-background-color-1) var(--start-percent),
+		var(--component-background-color-0) var(--middle-percent),
+		var(--component-background-color-1) var(--end-percent)
+	);
+	font-size: var(--nav-font-size);
+	font-weight: var(--nav-font-weight);
+	text-shadow: var(--nav-text-shadow);
+	box-shadow: var(--zero) var(--zero) var(--pixel) var(--box-shadow-color);
+	left: -2vw;
+	bottom: var(--zero);
+	width: 104%;
+	height: 12vh;
+	filter: var(--bar-shadow-filter);
+}
+
+header {
+	background: linear-gradient(
+		var(--background-vertical-degree),
+		var(--component-background-light-color-1) var(--start-percent),
+		var(--component-background-light-color-0) var(--middle-percent),
+		var(--component-background-light-color-1) var(--end-percent)
+	);
+	font-size: var(--nav-font-size);
+	font-weight: var(--nav-font-weight);
+	text-shadow: var(--nav-text-shadow);
+	box-shadow: var(--zero) var(--zero) var(--pixel) var(--box-shadow-color);
+	left: -2vw;
+	top: var(--zero);
+	width: 104%;
+	height: 6vh;
+	filter: drop-shadow(var(--zero) var(--zero) 0.1rem var(--online-color));
+	padding: var(--zero) 4vw;
+}
+
+@media (max-width: 600px) {
+	footer {
+		height: 8vh;
+	}
+	header {
+		height: 4vh;
+	}
+}

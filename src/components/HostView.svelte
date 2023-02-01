@@ -9,7 +9,7 @@
 	import type { HostHealthInfoType } from '../types';
 
 	/*            Functions            */
-	import { Format } from '../methods/hostFormat';
+	import { Format } from '../functions/hostFormat';
 
 	/*             Events              */
 	function refreshPage() {

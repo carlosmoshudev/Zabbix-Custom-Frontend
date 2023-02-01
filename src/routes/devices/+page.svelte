@@ -15,7 +15,7 @@
 	import HostView_Component from '../../components/HostView.svelte';
 
 	/*            Functions            */
-	import { FetchHosts } from '../../methods/api';
+	import { FetchHosts } from '../../functions/api';
 
 	function LoadHostsFromApi(): void {
 		FetchHosts(null, null)

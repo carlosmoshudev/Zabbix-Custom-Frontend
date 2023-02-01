@@ -7,8 +7,8 @@
 	import type { IZabbixHostInfo } from '../zabbix_interfaces';
 
 	/*            Functions            */
-	import { FetchHosts } from '../methods/api';
-	import { getPingStatus } from '../methods/hostFormat';
+	import { FetchHosts } from '../functions/api';
+	import { getPingStatus } from '../functions/hostFormat';
 
 	function LoadHostsFromApi(): void {
 		FetchHosts()

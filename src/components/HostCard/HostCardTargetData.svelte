@@ -6,6 +6,9 @@
 
 	/*            Interfaces           */
 	import type { IZabbixHostItem } from '../../zabbix_interfaces';
+
+	/*            Functions            */
+	import { Get_FirstWord } from '../../models/status';
 </script>
 
 <p>
@@ -13,11 +16,10 @@
 	{#each Matchers as _matcher}
 		{#each ItemCollection as _item}
 			{#if _item.name === _matcher}
-				<span class={_item.lastvalue.split(' ')[0]}>{_item.lastvalue.split(' ')[0]}</span>
+				<span class={Get_FirstWord(_item.lastvalue)}>
+					{Get_FirstWord(_item.lastvalue)}
+				</span>
 			{/if}
 		{/each}
 	{/each}
-	{#if ItemCollection.filter((item) => item.name === Matchers[0]).length === 0 && ItemCollection.filter((item) => item.name === Matchers[1]).length === 0}
-		<span class="unknown">Unknown</span>
-	{/if}
 </p>

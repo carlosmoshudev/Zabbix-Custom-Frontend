@@ -1,0 +1,15 @@
+.front__layer {
+	z-index: 1;
+}
+
+.most__front__layer {
+	z-index: 10;
+}
+
+.back__layer {
+	z-index: -1;
+}
+
+.most__back__layer {
+	z-index: -10;
+}

@@ -5,24 +5,27 @@
 	/*            Interfaces           */
 	import type { IZabbixHostItem } from '../../zabbix_interfaces';
 
+	/*            Functions            */
+	import { Get_StatusText, Has_PingItem } from '../../models/status';
+
+	/*            Models               */
+	import { StatusTextByCode } from '../../models/status';
+	import { hostPingItemMatchers } from '../../models/api';
+
 	/*       Component Constants      */
-	const ITEM_MATCHERS: Array<string> = ['Zabbix agent ping', 'ICMP ping'];
+	const TEXT = 'Ping:';
 </script>
 
 <p>
-	Ping:
-	{#each ITEM_MATCHERS as _matcher}
+	{TEXT}
+	{#each hostPingItemMatchers as _matcher}
 		{#each ItemCollection as _item}
 			{#if _item.name === _matcher}
-				{#if _item.lastvalue === '1'}
-					<span class="online">Online</span>
-				{:else if _item.lastvalue === '0'}
-					<span class="offline">Offline</span>
-				{/if}
+				<span class={Get_StatusText(_item)}>{Get_StatusText(_item)}</span>
 			{/if}
 		{/each}
 	{/each}
-	{#if ItemCollection.filter((item) => item.name === ITEM_MATCHERS[0]).length === 0 && ItemCollection.filter((item) => item.name === ITEM_MATCHERS[1]).length === 0}
-		<span class="unknown">Unknown</span>
+	{#if Has_PingItem(ItemCollection)}
+		<span class={StatusTextByCode['na']}>{StatusTextByCode['na']}</span>
 	{/if}
 </p>

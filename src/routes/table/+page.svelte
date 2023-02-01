@@ -3,11 +3,11 @@
 	import type { IZabbixHostInfo } from '../../zabbix_interfaces';
 
 	/*         Svelte Components       */
-	import HostsTable_Component from '../../components/HostsTable.svelte';
+	import HostsTable_Component from '../../components/HostTable/HostsTable.svelte';
 	import Loading_Component from '../../components/Loading.svelte';
 
 	/*            Functions            */
-	import { FetchHosts } from '../../methods/api';
+	import { FetchHosts } from '../../functions/api';
 	function Load() {
 		FetchHosts()
 			.then((response) => {

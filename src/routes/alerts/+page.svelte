@@ -10,7 +10,7 @@
 	import Loading_Component from '../../components/Loading.svelte';
 
 	/*            Functions            */
-	import { FetchHosts } from '../../methods/api';
+	import { FetchHosts } from '../../functions/api';
 
 	function Load(): void {
 		FetchHosts()
