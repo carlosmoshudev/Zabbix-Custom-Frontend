@@ -9,8 +9,6 @@
 	position: fixed;
 	top: var(--zero);
 	left: var(--zero);
-	width: var(--end-percent);
-	height: var(--end-percent);
 	filter: blur(5px);
 	opacity: 0.4;
 }
@@ -19,18 +17,12 @@
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-	width: var(--end-percent);
-	height: var(--end-percent);
 	list-style: none;
 }
 
 .navigation__link__item {
 	display: flex;
-	justify-content: center;
-	align-items: center;
 	flex-direction: column;
-	width: var(--end-percent);
-	height: var(--end-percent);
 	border-right: var(--pixel) dashed #ccc6;
 	border-left: var(--pixel) dashed #ccc6;
 	opacity: 0.8;
@@ -87,7 +79,7 @@
 
 .host__card__header > h2 {
 	margin: var(--zero);
-	padding: 5px 5px;
+	padding: 5px;
 	text-overflow: ellipsis;
 	overflow: hidden;
 	white-space: nowrap;

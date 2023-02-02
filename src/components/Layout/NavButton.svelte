@@ -4,9 +4,14 @@
 
 	/*              Types              */
 	import type { LinkButtonPropertiesType } from '../../types';
+
+	const li_classes = `
+	navigation__link__item 
+	hw__100p 
+	center`;
 </script>
 
-<li class="navigation__link__item">
+<li class={li_classes}>
 	<a href={LinkButtonProperties.Link} id="link">
 		<i class={LinkButtonProperties.Icon} />
 		<span id="text">{LinkButtonProperties.Text}</span>

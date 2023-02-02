@@ -30,11 +30,11 @@
 </header>
 
 <style lang="css" scoped>
-	.zabbix-logo {
+	.zabbix__logo {
 		width: 5vw;
 	}
 
-	.zabbix-logo img {
+	.zabbix__logo img {
 		width: 100%;
 	}
 

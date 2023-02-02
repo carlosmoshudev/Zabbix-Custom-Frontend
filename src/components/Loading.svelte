@@ -1,14 +1,7 @@
-<h1 id="title">Loading hosts... Please wait</h1>
-<div id="loading_animation" />
+<h1 id="title" class="base__style__formatting center">Loading hosts... Please wait</h1>
+<div class="loading_animation base__style__formatting center" id="loading_animation" />
 
 <style lang="css" scoped>
-	* {
-		box-sizing: var(--sizing);
-		font-family: var(--primary-font);
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-	}
 	#title {
 		color: var(--light-text-color-0);
 	}

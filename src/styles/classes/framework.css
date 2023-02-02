@@ -4,3 +4,24 @@
 	align-items: center;
 	position: fixed;
 }
+
+.hw__100p {
+	width: var(--end-percent);
+	height: var(--end-percent);
+}
+
+.hw__100v {
+	width: 100vw;
+	height: 100vh;
+}
+
+.center {
+	justify-content: center;
+	align-items: center;
+}
+
+.flex__row {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
