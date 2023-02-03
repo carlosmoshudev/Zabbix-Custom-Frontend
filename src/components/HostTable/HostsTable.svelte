@@ -1,9 +1,9 @@
 <script lang="ts">
 	export let ZabbixHostInfoCollection: Array<IZabbixHostInfo> = [];
-	import type { IZabbixHostInfo } from '../../zabbix_interfaces';
+	import type { IZabbixHostInfo } from '../../types/$interfaces';
+	import HostTableCellPing from './HostTableCellPing.svelte';
 	import { CheckHostItem } from '../../functions/utils';
 	import { hostPingItemMatchers } from '../../models/api';
-	import HostTableCellPing from './HostTableCellPing.svelte';
 </script>
 
 <section>

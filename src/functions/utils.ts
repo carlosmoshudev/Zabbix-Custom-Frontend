@@ -1,4 +1,4 @@
-import type { IZabbixHostItem } from '../zabbix_interfaces';
+import type { IZabbixHostItem } from '../types/$interfaces';
 
 export function CheckHostItem(hostItems: Array<IZabbixHostItem>, itemName: string): boolean {
 	return hostItems.some((item) => item.name === itemName);

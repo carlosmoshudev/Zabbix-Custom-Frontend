@@ -1,6 +1,6 @@
 <script lang="ts">
 	/*              Types              */
-	import type { LinkButtonPropertiesType } from 'src/types';
+	import type { LinkButtonPropertiesType } from 'src/types/$types';
 
 	/*         Svelte Components       */
 	import Header_Component from '../components/Layout/Header.svelte';

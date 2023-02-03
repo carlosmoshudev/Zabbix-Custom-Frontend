@@ -2,7 +2,7 @@
 	<meta name="description" content="Support" />
 </svelte:head>
 
-<div class="text-column">
+<div class="text-column page__margin__bottom">
 	<h2>AV Monitoring Dashboard Support</h2>
 	<p>
 		For general support, please contact with us at <span class="email"

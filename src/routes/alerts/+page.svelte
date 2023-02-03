@@ -1,15 +1,8 @@
 <script lang="ts">
-	/*            Properties           */
 	let ZabbixHostInfoCollection: Array<IZabbixHostInfo> = [];
-
-	/*            Interfaces           */
-	import type { IZabbixHostInfo } from '../../zabbix_interfaces';
-
-	/*         Svelte Components       */
+	import type { IZabbixHostInfo } from '../../types/$interfaces';
 	import HostCard_Component from '../../components/HostCard/HostCard.svelte';
 	import Loading_Component from '../../components/Loading.svelte';
-
-	/*            Functions            */
 	import { FetchHosts } from '../../functions/api';
 
 	function Load(): void {
@@ -35,15 +28,14 @@
 		return filteredHosts;
 	}
 
-	/*            Lifecycle            */
 	Load();
 </script>
 
-<section id="page" class="center">
+<section id="page" class="all__center page__margin__bottom">
 	{#if ZabbixHostInfoCollection.length === 0}
 		<Loading_Component />
 	{:else}
-		<div class="center flex__row">
+		<div class="all__center flex__row">
 			{#each ZabbixHostInfoCollection as _hostInfo}
 				<HostCard_Component ZabbixHostInfo={_hostInfo} />
 			{/each}
@@ -56,6 +48,5 @@
 		display: flex;
 		flex-direction: column;
 		color: var(--light-text-color-0);
-		margin-bottom: 20vh;
 	}
 </style>

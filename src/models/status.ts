@@ -1,4 +1,4 @@
-import type { IZabbixHostItem } from '../zabbix_interfaces';
+import type { IZabbixHostItem } from '../types/$interfaces';
 import { hostPingItemMatchers } from './api';
 
 export const StatusTextByCode = {

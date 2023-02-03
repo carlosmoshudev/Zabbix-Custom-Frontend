@@ -1,13 +1,10 @@
 <script lang="ts">
-	/*            Interfaces           */
-	import type { IZabbixHostInfo } from '../../zabbix_interfaces';
-
-	/*         Svelte Components       */
+	import type { IZabbixHostInfo } from '../../types/$interfaces';
 	import HostsTable_Component from '../../components/HostTable/HostsTable.svelte';
 	import Loading_Component from '../../components/Loading.svelte';
-
-	/*            Functions            */
 	import { FetchHosts } from '../../functions/api';
+	let hosts: Array<IZabbixHostInfo> = [];
+
 	function Load() {
 		FetchHosts()
 			.then((response) => {
@@ -17,14 +14,10 @@
 			.catch((error) => console.log(error));
 	}
 
-	/*            Properties           */
-	let hosts: Array<IZabbixHostInfo> = [];
-
-	/*            Lifecycle            */
 	Load();
 </script>
 
-<section>
+<section class="page__margin__bottom">
 	{#if hosts.length === 0}
 		<Loading_Component />
 	{:else}

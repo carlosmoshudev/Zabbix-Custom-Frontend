@@ -15,7 +15,7 @@
 	height: 100vh;
 }
 
-.center {
+.all__center {
 	justify-content: center;
 	align-items: center;
 }
@@ -24,4 +24,27 @@
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
+}
+
+.navigation__link {
+	text-decoration: none;
+	font-size: var(--font-size);
+	animation: ligth-text-blinking var(--large-animation-time) ease infinite;
+}
+
+.navigation__link__text {
+	margin: var(--zero) 1vw;
+	text-align: center;
+	font-size: 1rem;
+	letter-spacing: 0.1rem;
+}
+
+.page__margin__bottom {
+	margin-bottom: var(--end-page-padding);
+}
+
+@media (max-width: 600px) {
+	.navigation__link__text {
+		display: none;
+	}
 }

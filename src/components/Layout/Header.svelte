@@ -1,13 +1,8 @@
 <script lang="ts">
-	/*        Component Exports        */
 	export let ApplicationTitle: string;
-
-	/*          Image Imports          */
 	import TrisonLogo from '../../lib/images/trison.png';
 	import CustomerLogo from '../../lib/images/customer.svg';
 	import ZabbixLogo from '../../lib/images/zabbix.svg';
-
-	/*        Component Constants      */
 	const TRISON_CLASS = 'trison__logo header__logo';
 	const CUSTOMER_CLASS = 'customer__logo header__logo';
 	const ZABBIX_CLASS = 'zabbix__logo header__logo';
@@ -35,7 +30,7 @@
 	}
 
 	.zabbix__logo img {
-		width: 100%;
+		width: var(--end-percent);
 	}
 
 	#title {

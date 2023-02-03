@@ -2,7 +2,7 @@
 	export let ItemCollection: Array<IZabbixHostItem>;
 	export let Title: string;
 	export let Matchers: Array<string>;
-	import type { IZabbixHostItem } from '../../zabbix_interfaces';
+	import type { IZabbixHostItem } from '../../types/$interfaces';
 	import { Get_FirstWord } from '../../models/status';
 </script>
 

@@ -1,7 +1,7 @@
 <script lang="ts">
 	export let itemCollection: Array<IZabbixHostItem> = [];
 	export let matcher: string;
-	import type { IZabbixHostItem } from '../../zabbix_interfaces';
+	import type { IZabbixHostItem } from '../../types/$interfaces';
 </script>
 
 {#each itemCollection as __item}

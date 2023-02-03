@@ -1,6 +1,6 @@
 <script lang="ts">
 	export let ItemCollection: Array<IZabbixHostItem>;
-	import type { IZabbixHostItem } from '../../zabbix_interfaces';
+	import type { IZabbixHostItem } from '../../types/$interfaces';
 	import { Get_StatusText, Has_PingItem } from '../../models/status';
 	import { StatusTextByCode } from '../../models/status';
 	import { hostPingItemMatchers } from '../../models/api';

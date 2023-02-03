@@ -3,10 +3,10 @@
 	export let HostInfo: IZabbixHostInfo;
 
 	/*            Interfaces           */
-	import type { IZabbixHostInfo } from '../zabbix_interfaces';
+	import type { IZabbixHostInfo } from '../types/$interfaces';
 
 	/*              Types              */
-	import type { HostHealthInfoType } from '../types';
+	import type { HostHealthInfoType } from '../types/$types';
 
 	/*            Functions            */
 	import { Format } from '../functions/hostFormat';

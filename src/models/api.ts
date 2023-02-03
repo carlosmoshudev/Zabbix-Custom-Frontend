@@ -1,4 +1,4 @@
-import type { ItemTarget } from '../types';
+import type { ItemTarget } from '../types/$types';
 
 export const hostItemTargets: Array<ItemTarget> = [
 	{

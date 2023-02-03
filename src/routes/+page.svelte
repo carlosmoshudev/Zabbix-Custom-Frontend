@@ -4,7 +4,7 @@
 	let OnlineAndOfflineHosts: Array<boolean> = [];
 
 	/*            Interfaces           */
-	import type { IZabbixHostInfo } from '../zabbix_interfaces';
+	import type { IZabbixHostInfo } from '../types/$interfaces';
 
 	/*            Functions            */
 	import { FetchHosts } from '../functions/api';

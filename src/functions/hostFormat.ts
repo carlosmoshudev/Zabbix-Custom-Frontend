@@ -1,11 +1,11 @@
-import type { IZabbixHostInfo } from '../zabbix_interfaces';
+import type { IZabbixHostInfo } from '../types/$interfaces';
 
 import type {
 	HostHealthInfoType,
 	SystemResourcesType,
 	MonitoringStatusType,
 	UsageType
-} from '../types';
+} from '../types/$types';
 
 export function Format(host: IZabbixHostInfo): HostHealthInfoType {
 	return {

@@ -1,4 +1,4 @@
-<h1 id="title" class="base__style__formatting center">Loading hosts... Please wait</h1>
+<h1 id="title" class="base__style__formatting all__center">Loading hosts... Please wait</h1>
 <div class="loading_animation base__style__formatting center" id="loading_animation" />
 
 <style lang="css" scoped>
